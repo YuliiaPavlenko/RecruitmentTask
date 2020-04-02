@@ -1,0 +1,6 @@
+framework module Pods_RecruitmentTask {
+  umbrella header "Pods-RecruitmentTask-umbrella.h"
+
+  export *
+  module * { export * }
+}
