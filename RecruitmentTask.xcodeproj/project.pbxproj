@@ -13,6 +13,8 @@
 		AF564F8524360875000612F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF564F8324360875000612F5 /* Main.storyboard */; };
 		AF564F8724360876000612F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF564F8624360876000612F5 /* Assets.xcassets */; };
 		AF564F8A24360876000612F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF564F8824360876000612F5 /* LaunchScreen.storyboard */; };
+		AF564F96243616F5000612F5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F95243616F5000612F5 /* Colors.swift */; };
+		AF564F9824362DE2000612F5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F9724362DE2000612F5 /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		AF564F8624360876000612F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF564F8924360876000612F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF564F8B24360876000612F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF564F95243616F5000612F5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		AF564F9724362DE2000612F5 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		CCAF8154937583CDDE788891 /* Pods-RecruitmentTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecruitmentTask.release.xcconfig"; path = "Target Support Files/Pods-RecruitmentTask/Pods-RecruitmentTask.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,13 +74,47 @@
 			isa = PBXGroup;
 			children = (
 				AF564F7D24360875000612F5 /* AppDelegate.swift */,
+				AF564F9124361662000612F5 /* UI */,
 				AF564F8124360875000612F5 /* ViewController.swift */,
 				AF564F8324360875000612F5 /* Main.storyboard */,
-				AF564F8624360876000612F5 /* Assets.xcassets */,
 				AF564F8824360876000612F5 /* LaunchScreen.storyboard */,
 				AF564F8B24360876000612F5 /* Info.plist */,
 			);
 			path = RecruitmentTask;
+			sourceTree = "<group>";
+		};
+		AF564F9124361662000612F5 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AF564F922436166A000612F5 /* Common */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		AF564F922436166A000612F5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AF564F93243616B0000612F5 /* Color */,
+				AF564F94243616BF000612F5 /* Font */,
+				AF564F8624360876000612F5 /* Assets.xcassets */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		AF564F93243616B0000612F5 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				AF564F95243616F5000612F5 /* Colors.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		AF564F94243616BF000612F5 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				AF564F9724362DE2000612F5 /* Fonts.swift */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		DA0D013D22FEF30BDACE59AA /* Pods */ = {
@@ -85,7 +123,6 @@
 				09031B1A8038144B2CA9094C /* Pods-RecruitmentTask.debug.xcconfig */,
 				CCAF8154937583CDDE788891 /* Pods-RecruitmentTask.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -186,7 +223,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF564F9824362DE2000612F5 /* Fonts.swift in Sources */,
 				AF564F8224360875000612F5 /* ViewController.swift in Sources */,
+				AF564F96243616F5000612F5 /* Colors.swift in Sources */,
 				AF564F7E24360875000612F5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
