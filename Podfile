@@ -4,6 +4,7 @@ inhibit_all_warnings!
 
 def all_pods
   pod 'SwiftLint'
+  pod 'PureLayout'
 end
 
 
