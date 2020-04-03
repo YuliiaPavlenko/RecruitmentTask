@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController {
         self.title = "Profiles"
         navigationItem.setHidesBackButton(true, animated: true)
         navigationController?.navigationBar.barTintColor = Colors.green
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.white]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.white, .font: Fonts.navigationTitle!]
     }
 }
 
