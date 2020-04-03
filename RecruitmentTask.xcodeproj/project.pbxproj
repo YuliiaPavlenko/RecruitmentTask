@@ -17,6 +17,7 @@
 		AFBE8A3924366777005BFA96 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBE8A3824366777005BFA96 /* ProfileView.swift */; };
 		AFBE8A3B243667ED005BFA96 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBE8A3A243667ED005BFA96 /* ProfilePresenter.swift */; };
 		AFBE8A3D24366896005BFA96 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBE8A3C24366896005BFA96 /* ProfileViewController.swift */; };
+		AFBE8A3F243669D2005BFA96 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBE8A3E243669D2005BFA96 /* ProfileCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		AFBE8A3824366777005BFA96 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		AFBE8A3A243667ED005BFA96 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		AFBE8A3C24366896005BFA96 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		AFBE8A3E243669D2005BFA96 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		CCAF8154937583CDDE788891 /* Pods-RecruitmentTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecruitmentTask.release.xcconfig"; path = "Target Support Files/Pods-RecruitmentTask/Pods-RecruitmentTask.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 				AFBE8A3824366777005BFA96 /* ProfileView.swift */,
 				AFBE8A3A243667ED005BFA96 /* ProfilePresenter.swift */,
 				AFBE8A3C24366896005BFA96 /* ProfileViewController.swift */,
+				AFBE8A3E243669D2005BFA96 /* ProfileCell.swift */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				AFBE8A3B243667ED005BFA96 /* ProfilePresenter.swift in Sources */,
 				AFBE8A3924366777005BFA96 /* ProfileView.swift in Sources */,
 				AFBE8A3D24366896005BFA96 /* ProfileViewController.swift in Sources */,
+				AFBE8A3F243669D2005BFA96 /* ProfileCell.swift in Sources */,
 				AF564F96243616F5000612F5 /* Colors.swift in Sources */,
 				AF564F7E24360875000612F5 /* AppDelegate.swift in Sources */,
 			);
