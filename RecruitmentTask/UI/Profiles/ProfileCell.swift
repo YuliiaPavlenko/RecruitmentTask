@@ -38,11 +38,11 @@ class ProfileCell: UITableViewCell {
     }()
     
     private let profileImage: UIImageView = {
-        var image = UIImage(named:"applover")
-        let imgView = UIImageView(image: image)
-        imgView.contentMode = .scaleAspectFit
-        imgView.clipsToBounds = true
-        return imgView
+        var imageName = UIImage(named:"applover")
+        let imageView = UIImageView(image: imageName)
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        return imageView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

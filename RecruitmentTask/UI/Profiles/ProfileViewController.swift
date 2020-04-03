@@ -19,6 +19,11 @@ class ProfileViewController: UIViewController {
         customizeNavigationBar()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -67,6 +72,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsVC = ProfileDetailsVC()
+        self.navigationController?.pushViewController(detailsVC, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
