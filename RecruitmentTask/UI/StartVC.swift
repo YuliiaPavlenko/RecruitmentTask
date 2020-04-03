@@ -21,14 +21,27 @@ class StartVC: UIViewController {
         return true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         view.addSubview(logoImageView)
         someImageViewConstraints()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggle(_:)))
+        view.addGestureRecognizer(tapGesture)
     }
     
+    @objc func toggle(_ sender: UITapGestureRecognizer) {
+        let vc = ProfileViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+//        UIView.transition(from: logoImageView, to: secondView, duration: 0.3, options: [.transitionCrossDissolve], completion: nil)
+    }
     
     func someImageViewConstraints() {
         let widthHeight: CGFloat = 156.81
