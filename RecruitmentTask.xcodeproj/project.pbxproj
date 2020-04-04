@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		807A3C7C52BC9FFAE392AE04 /* Pods_RecruitmentTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D92ED7CD3B9180DEC33E66 /* Pods_RecruitmentTask.framework */; };
-		AF49F7C3243798CD00880716 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF49F7C1243798A600880716 /* Raleway-Regular.ttf */; };
-		AF49F7C4243798CD00880716 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF49F7C2243798AF00880716 /* Raleway-SemiBold.ttf */; };
 		AF49F7C724379D9B00880716 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7C624379D9B00880716 /* UIView+Utils.swift */; };
 		AF49F7CA2437D89300880716 /* ProfileDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7C92437D89300880716 /* ProfileDetailsVC.swift */; };
 		AF49F7CC243890BC00880716 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7CB243890BC00880716 /* CustomLabel.swift */; };
 		AF49F7CE2438C4A000880716 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7CD2438C4A000880716 /* ActivityCell.swift */; };
 		AF49F7D02438C61600880716 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7CF2438C61600880716 /* CustomStackView.swift */; };
+		AF49F7D32438D36700880716 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF49F7D22438D35F00880716 /* Raleway-Regular.ttf */; };
+		AF49F7D42438D36700880716 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF49F7D12438D35F00880716 /* Raleway-SemiBold.ttf */; };
 		AF564F7E24360875000612F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F7D24360875000612F5 /* AppDelegate.swift */; };
 		AF564F8224360875000612F5 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F8124360875000612F5 /* StartVC.swift */; };
 		AF564F8724360876000612F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF564F8624360876000612F5 /* Assets.xcassets */; };
@@ -29,13 +29,13 @@
 /* Begin PBXFileReference section */
 		09031B1A8038144B2CA9094C /* Pods-RecruitmentTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecruitmentTask.debug.xcconfig"; path = "Target Support Files/Pods-RecruitmentTask/Pods-RecruitmentTask.debug.xcconfig"; sourceTree = "<group>"; };
 		28D92ED7CD3B9180DEC33E66 /* Pods_RecruitmentTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecruitmentTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF49F7C1243798A600880716 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-Regular.ttf"; path = "../../../Downloads/raleway/Raleway-Regular.ttf"; sourceTree = "<group>"; };
-		AF49F7C2243798AF00880716 /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-SemiBold.ttf"; path = "../../../Downloads/raleway/Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
 		AF49F7C624379D9B00880716 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		AF49F7C92437D89300880716 /* ProfileDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsVC.swift; sourceTree = "<group>"; };
 		AF49F7CB243890BC00880716 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		AF49F7CD2438C4A000880716 /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		AF49F7CF2438C61600880716 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
+		AF49F7D12438D35F00880716 /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
+		AF49F7D22438D35F00880716 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
 		AF564F7A24360875000612F5 /* RecruitmentTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecruitmentTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF564F7D24360875000612F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF564F8124360875000612F5 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
@@ -73,8 +73,8 @@
 		AF49F7BC2437982A00880716 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AF49F7C1243798A600880716 /* Raleway-Regular.ttf */,
-				AF49F7C2243798AF00880716 /* Raleway-SemiBold.ttf */,
+				AF49F7D22438D35F00880716 /* Raleway-Regular.ttf */,
+				AF49F7D12438D35F00880716 /* Raleway-SemiBold.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -245,8 +245,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF49F7C3243798CD00880716 /* Raleway-Regular.ttf in Resources */,
-				AF49F7C4243798CD00880716 /* Raleway-SemiBold.ttf in Resources */,
+				AF49F7D32438D36700880716 /* Raleway-Regular.ttf in Resources */,
+				AF49F7D42438D36700880716 /* Raleway-SemiBold.ttf in Resources */,
 				AF564F8A24360876000612F5 /* LaunchScreen.storyboard in Resources */,
 				AF564F8724360876000612F5 /* Assets.xcassets in Resources */,
 			);
