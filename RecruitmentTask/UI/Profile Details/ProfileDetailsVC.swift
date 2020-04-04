@@ -12,7 +12,7 @@ class ProfileDetailsVC: UIViewController {
     let tableView = UITableView()
     let cellId = "cellId"
     
-    // MARK: - Create Labels
+    // MARK: - Create UI Elements
     private let profileImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "testUserPicture.png")
@@ -83,7 +83,13 @@ class ProfileDetailsVC: UIViewController {
         tableView.dataSource = self
         tableView.register(ActivityCell.self, forCellReuseIdentifier: cellId)
     }
-    
+      
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+    }
+
     func setupTableView() {
       tableView.translatesAutoresizingMaskIntoConstraints = false
       tableView.topAnchor.constraint(equalTo: activityLabel.bottomAnchor).isActive = true
