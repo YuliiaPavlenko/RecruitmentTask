@@ -30,8 +30,8 @@ class ActivityCell: UITableViewCell {
         let activityStackView = CustomStackView.createVerticalStackView(arrangedSubviews: [postTitle, postBody])
         addSubview(activityStackView)
         
-        profileImage.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 12, paddingLeft: 26, paddingBottom: 12, paddingRight: 0, width: 40, height: 0, enableInsets: false)
-        activityStackView.anchor(top: topAnchor, left: profileImage.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 22, width: 0, height: 0, enableInsets: false)
+        profileImage.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 16, paddingLeft: 26, paddingBottom: 12, paddingRight: 0, width: 40, height: 0, enableInsets: false)
+        activityStackView.anchor(top: topAnchor, left: profileImage.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 16, paddingLeft: 12, paddingBottom: 0, paddingRight: 22, width: 0, height: 62, enableInsets: false)
     
     }
     

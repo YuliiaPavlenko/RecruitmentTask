@@ -9,6 +9,8 @@
 import UIKit
 
 class ProfileDetailsVC: UIViewController {
+    let tableView = UITableView()
+    let cellId = "cellId"
     
     // MARK: - Create Labels
     private let profileImage: UIImageView = {
@@ -53,7 +55,6 @@ class ProfileDetailsVC: UIViewController {
         companyStackView.anchor(top: addressStackView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 14, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 0, enableInsets: false)
         siteStackView.anchor(top: companyStackView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 14, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 0, enableInsets: false)
         activityLabel.anchor(top: siteStackView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 14, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
-        
     }
 
     private func addSubviews() {
@@ -67,6 +68,7 @@ class ProfileDetailsVC: UIViewController {
         view.addSubview(siteTitleLabel)
         view.addSubview(siteLabel)
         view.addSubview(activityLabel)
+        view.addSubview(tableView)
     }
   
     override func viewDidLoad() {
@@ -76,6 +78,19 @@ class ProfileDetailsVC: UIViewController {
         addSubviews()
         setConstraints()
         addTestInfo()
+        setupTableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(ActivityCell.self, forCellReuseIdentifier: cellId)
+    }
+    
+    func setupTableView() {
+      tableView.translatesAutoresizingMaskIntoConstraints = false
+      tableView.topAnchor.constraint(equalTo: activityLabel.bottomAnchor).isActive = true
+      tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+      tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+      tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        tableView.separatorColor = .clear
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -103,27 +118,20 @@ class ProfileDetailsVC: UIViewController {
 }
 
 // MARK: - UITableView Delegate & DataSource
-//extension ProfileDetailsVC: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 2
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProfileCell
-//        cell.userNameLabel.text = "Test Name"
-//        cell.userEmailLabel.text = "Test Email"
-//        cell.userPhoneLabel.text = "1234567890"
-//        return cell
-//    }
-//    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 74
-//    }
-//    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailsVC = ProfileDetailsVC()
-//        self.navigationController?.pushViewController(detailsVC, animated: true)
-//        tableView.deselectRow(at: indexPath, animated: true)
-//    }
-//    
-//}
+extension ProfileDetailsVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ActivityCell
+        cell.postTitle.text = "Tytuł"
+        cell.postBody.text = "Applover Software House, ul. Świeradowska 77, 50-559 Wrocław. Applover Software House, ul. Świeradowska 77, 50-559 Wrocław. Applover Software House, ul. Świeradowska 77, 50-559 Wrocław"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 74
+    }
+    
+}
