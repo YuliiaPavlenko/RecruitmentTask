@@ -20,6 +20,18 @@ class ProfileDetailsVC: UIViewController {
         imageView.clipsToBounds = true
         return imageView
     }()
+    
+    private let editImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = Colors.green
+        imageView.image = UIImage(named: "pencil.png")
+//        imageView.layer.cornerRadius = imageView.frame.height / 2
+//        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+//        imageView.clipsToBounds = true
+//        imageView.setRounded()
+        return imageView
+    }()
 
     private let profileName = CustomLabel.createProfileNameLabel()
     private let profileEmail = CustomLabel.createProfileDetailsLabel()
@@ -48,8 +60,12 @@ class ProfileDetailsVC: UIViewController {
         view.addSubview(addressStackView)
         view.addSubview(companyStackView)
         view.addSubview(siteStackView)
+//        editImageView.setRounded()
+        editImageView.layer.masksToBounds = true
+        editImageView.layer.cornerRadius = editImageView.bounds.width / 2
         
         profileImage.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: view.frame.size.height * 0.4, enableInsets: false)
+        editImageView.anchor(top: nil, left: nil, bottom: profileImage.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -33, paddingRight: 26, width: 66, height: 66, enableInsets: false)
         profileInfoStackView.anchor(top: nil, left: view.leftAnchor, bottom: profileImage.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 25, paddingBottom: 16, paddingRight: 0, width: 0, height: 0, enableInsets: false)
         addressStackView.anchor(top: profileImage.bottomAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 28, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
         companyStackView.anchor(top: addressStackView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 14, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 0, enableInsets: false)
@@ -68,6 +84,7 @@ class ProfileDetailsVC: UIViewController {
         view.addSubview(siteTitleLabel)
         view.addSubview(siteLabel)
         view.addSubview(activityLabel)
+        view.addSubview(editImageView)
         view.addSubview(tableView)
     }
   
