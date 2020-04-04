@@ -37,10 +37,15 @@ class ProfileDetailsVC: UIViewController {
     
     // MARK: - Set Constraints
     private func setConstraints() {
-        let profileInfoStackView = createProfileInfoStackView(arrangedSubviews: [profileName, profileEmail, profilePhone])
-        let addressStackView = createProfileInfoStackView(arrangedSubviews: [addressTitleLabel, addressLabel])
-        let companyStackView = createProfileInfoStackView(arrangedSubviews: [companyTitleLabel, companyLabel])
-        let siteStackView = createProfileInfoStackView(arrangedSubviews: [siteTitleLabel, siteLabel])
+        let profileInfoStackView = CustomStackView.createVerticalStackView(arrangedSubviews: [profileName, profileEmail, profilePhone])
+        let addressStackView = CustomStackView.createVerticalStackView(arrangedSubviews: [addressTitleLabel, addressLabel])
+        let companyStackView = CustomStackView.createVerticalStackView(arrangedSubviews: [companyTitleLabel, companyLabel])
+        let siteStackView = CustomStackView.createVerticalStackView(arrangedSubviews: [siteTitleLabel, siteLabel])
+        
+        view.addSubview(profileInfoStackView)
+        view.addSubview(addressStackView)
+        view.addSubview(companyStackView)
+        view.addSubview(siteStackView)
         
         profileImage.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: view.frame.size.height * 0.4, enableInsets: false)
         profileInfoStackView.anchor(top: nil, left: view.leftAnchor, bottom: profileImage.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 25, paddingBottom: 16, paddingRight: 0, width: 0, height: 0, enableInsets: false)
@@ -50,16 +55,7 @@ class ProfileDetailsVC: UIViewController {
         activityLabel.anchor(top: siteStackView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 14, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
         
     }
-    
-    private func createProfileInfoStackView(arrangedSubviews: [UILabel]) -> UIStackView {
-        let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
-        stackView.distribution = .equalSpacing
-        stackView.axis = .vertical
-        stackView.spacing = 7
-        view.addSubview(stackView)
-        return stackView
-    }
-    
+
     private func addSubviews() {
         view.addSubview(profileImage)
         view.addSubview(profileName)
@@ -105,3 +101,29 @@ class ProfileDetailsVC: UIViewController {
         activityLabel.text = "Aktywność"
     }
 }
+
+// MARK: - UITableView Delegate & DataSource
+//extension ProfileDetailsVC: UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 2
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProfileCell
+//        cell.userNameLabel.text = "Test Name"
+//        cell.userEmailLabel.text = "Test Email"
+//        cell.userPhoneLabel.text = "1234567890"
+//        return cell
+//    }
+//    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 74
+//    }
+//    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let detailsVC = ProfileDetailsVC()
+//        self.navigationController?.pushViewController(detailsVC, animated: true)
+//        tableView.deselectRow(at: indexPath, animated: true)
+//    }
+//    
+//}

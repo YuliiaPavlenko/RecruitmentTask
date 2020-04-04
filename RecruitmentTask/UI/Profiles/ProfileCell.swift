@@ -55,12 +55,9 @@ class ProfileCell: UITableViewCell {
         profileImage.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 12, paddingLeft: 26, paddingBottom: 12, paddingRight: 0, width: 40, height: 0, enableInsets: false)
         userNameLabel.anchor(top: topAnchor, left: profileImage.rightAnchor, bottom: nil, right: nil, paddingTop: 11, paddingLeft: 19, paddingBottom: 0, paddingRight: 0, width: frame.size.width / 2, height: 19, enableInsets: false)
         
-        let stackView = UIStackView(arrangedSubviews: [userEmailLabel, userPhoneLabel])
-        stackView.distribution = .equalSpacing
-        stackView.axis = .horizontal
-        stackView.spacing = 5
-        addSubview(stackView)
-        stackView.anchor(top: userNameLabel.bottomAnchor, left: profileImage.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 19, paddingBottom: 0, paddingRight: 10, width: 0, height: 0, enableInsets: false)
+        let userDataStackView = CustomStackView.createHorizontalStackView(arrangedSubviews: [userEmailLabel, userPhoneLabel])
+        addSubview(userDataStackView)
+        userDataStackView.anchor(top: userNameLabel.bottomAnchor, left: profileImage.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 19, paddingBottom: 0, paddingRight: 10, width: 0, height: 0, enableInsets: false)
     
     }
     
