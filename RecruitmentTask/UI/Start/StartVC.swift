@@ -9,6 +9,8 @@
 import UIKit
 
 class StartVC: UIViewController {
+    
+    var startPresenter = StartPresenter()
 
     let logoImageView: UIImageView = {
        let imageView = UIImageView()
@@ -28,7 +30,7 @@ class StartVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        startPresenter.viewDelegate = self
         view.backgroundColor = .white
         view.addSubview(logoImageView)
         setImageViewConstraints()
@@ -38,9 +40,7 @@ class StartVC: UIViewController {
     }
     
     @objc func toggle(_ sender: UITapGestureRecognizer) {
-        let vc = ProfileViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-//        UIView.transition(from: logoImageView, to: secondView, duration: 0.3, options: [.transitionCrossDissolve], completion: nil)
+        startPresenter.screenClicked()
     }
     
     func setImageViewConstraints() {
@@ -49,5 +49,14 @@ class StartVC: UIViewController {
         logoImageView.heightAnchor.constraint(equalToConstant: widthHeight).isActive = true
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80).isActive = true
+    }
+}
+
+// MARK: StartViewDelegate
+extension StartVC: StartViewDelegate {
+    func showProfileVC() {
+        let vc = ProfileViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+        //        UIView.transition(from: logoImageView, to: secondView, duration: 0.3, options: [.transitionCrossDissolve], completion: nil)
     }
 }
