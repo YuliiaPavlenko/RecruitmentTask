@@ -33,6 +33,8 @@ class ProfileDetailsVC: UIViewController {
     private let siteTitleLabel = CustomLabel.createTitleLabel()
     private let siteLabel = CustomLabel.createAddressLabel()
     
+    private let activityLabel = CustomLabel.createTitleLabel()
+    
     // MARK: - Set Constraints
     private func setConstraints() {
         let profileInfoStackView = createProfileInfoStackView(arrangedSubviews: [profileName, profileEmail, profilePhone])
@@ -45,6 +47,7 @@ class ProfileDetailsVC: UIViewController {
         addressStackView.anchor(top: profileImage.bottomAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 28, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
         companyStackView.anchor(top: addressStackView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 14, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 0, enableInsets: false)
         siteStackView.anchor(top: companyStackView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 14, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 0, enableInsets: false)
+        activityLabel.anchor(top: siteStackView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 14, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
         
     }
     
@@ -67,6 +70,7 @@ class ProfileDetailsVC: UIViewController {
         view.addSubview(companyLabel)
         view.addSubview(siteTitleLabel)
         view.addSubview(siteLabel)
+        view.addSubview(activityLabel)
     }
   
     override func viewDidLoad() {
@@ -98,5 +102,6 @@ class ProfileDetailsVC: UIViewController {
         companyLabel.text = "Applover Software House, ul. Świeradowska 77, 50-559 Wrocław"
         siteTitleLabel.text = "Strona"
         siteLabel.text = "Applover.pl"
+        activityLabel.text = "Aktywność"
     }
 }
