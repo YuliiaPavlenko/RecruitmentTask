@@ -36,7 +36,6 @@ class ProfileCell: UITableViewCell {
         phoneLabel.numberOfLines = 0
         return phoneLabel
     }()
-//    public let userPhoneLabel = CustomLabel.postLabel
     
     private let profileImage: UIImageView = {
         let imageView = UIImageView()
