@@ -31,7 +31,7 @@ class StartVC: UIViewController {
         
         view.backgroundColor = .white
         view.addSubview(logoImageView)
-        someImageViewConstraints()
+        setImageViewConstraints()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggle(_:)))
         view.addGestureRecognizer(tapGesture)
@@ -43,7 +43,7 @@ class StartVC: UIViewController {
 //        UIView.transition(from: logoImageView, to: secondView, duration: 0.3, options: [.transitionCrossDissolve], completion: nil)
     }
     
-    func someImageViewConstraints() {
+    func setImageViewConstraints() {
         let widthHeight: CGFloat = 156.81
         logoImageView.widthAnchor.constraint(equalToConstant: widthHeight).isActive = true
         logoImageView.heightAnchor.constraint(equalToConstant: widthHeight).isActive = true

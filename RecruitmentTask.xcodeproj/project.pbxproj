@@ -12,6 +12,7 @@
 		AF49F7C4243798CD00880716 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF49F7C2243798AF00880716 /* Raleway-SemiBold.ttf */; };
 		AF49F7C724379D9B00880716 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7C624379D9B00880716 /* UIView+Utils.swift */; };
 		AF49F7CA2437D89300880716 /* ProfileDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7C92437D89300880716 /* ProfileDetailsVC.swift */; };
+		AF49F7CC243890BC00880716 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7CB243890BC00880716 /* CustomLabel.swift */; };
 		AF564F7E24360875000612F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F7D24360875000612F5 /* AppDelegate.swift */; };
 		AF564F8224360875000612F5 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F8124360875000612F5 /* StartVC.swift */; };
 		AF564F8724360876000612F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF564F8624360876000612F5 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		AF49F7C2243798AF00880716 /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-SemiBold.ttf"; path = "../../../Downloads/raleway/Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
 		AF49F7C624379D9B00880716 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		AF49F7C92437D89300880716 /* ProfileDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsVC.swift; sourceTree = "<group>"; };
+		AF49F7CB243890BC00880716 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		AF564F7A24360875000612F5 /* RecruitmentTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecruitmentTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF564F7D24360875000612F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF564F8124360875000612F5 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				AF564F93243616B0000612F5 /* Color */,
 				AF564F94243616BF000612F5 /* Font */,
+				AF49F7CB243890BC00880716 /* CustomLabel.swift */,
 				AF564F8624360876000612F5 /* Assets.xcassets */,
 			);
 			path = Common;
@@ -300,6 +303,7 @@
 				AFBE8A3F243669D2005BFA96 /* ProfileCell.swift in Sources */,
 				AF564F96243616F5000612F5 /* Colors.swift in Sources */,
 				AF49F7C724379D9B00880716 /* UIView+Utils.swift in Sources */,
+				AF49F7CC243890BC00880716 /* CustomLabel.swift in Sources */,
 				AF564F7E24360875000612F5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

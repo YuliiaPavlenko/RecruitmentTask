@@ -36,10 +36,11 @@ class ProfileCell: UITableViewCell {
         phoneLabel.numberOfLines = 0
         return phoneLabel
     }()
+//    public let userPhoneLabel = CustomLabel.postLabel
     
     private let profileImage: UIImageView = {
-        var imageName = UIImage(named:"applover")
-        let imageView = UIImageView(image: imageName)
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "applover.png")
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
