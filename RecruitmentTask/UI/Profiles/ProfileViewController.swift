@@ -12,6 +12,7 @@ class ProfileViewController: UIViewController {
     let tableView = UITableView()
     let cellId = "cellId"
     let rowHeight: CGFloat = 64
+    var profilePresenter = ProfilePresenter()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -26,6 +27,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        profilePresenter.viewDelegate = self
         setupTableView()
         tableView.delegate = self
         tableView.dataSource = self
@@ -72,9 +74,16 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailsVC = ProfileDetailsVC()
-        self.navigationController?.pushViewController(detailsVC, animated: true)
+        profilePresenter.profileClicked()
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+}
+
+// MARK: ProfileViewDelegate
+extension ProfileViewController: ProfileViewDelegate {
+    func showProfileDetails() {
+        let detailsVC = ProfileDetailsVC()
+        navigationController?.pushViewController(detailsVC, animated: true)
+    }
 }

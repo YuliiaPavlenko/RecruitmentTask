@@ -7,3 +7,15 @@
 //
 
 import UIKit
+
+protocol ProfileViewDelegate: class {
+    func showProfileDetails()
+}
+
+class ProfilePresenter {
+    weak var viewDelegate: ProfileViewDelegate?
+
+    func profileClicked() {
+        viewDelegate?.showProfileDetails()
+    }
+}
