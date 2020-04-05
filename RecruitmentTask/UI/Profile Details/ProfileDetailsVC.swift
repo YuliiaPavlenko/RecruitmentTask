@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class ProfileDetailsVC: UIViewController {
     let tableView = UITableView()
@@ -106,6 +107,7 @@ class ProfileDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        showProgress()
         profileDetailsPresenter.viewIsPrepared()
     }
       
@@ -136,15 +138,15 @@ class ProfileDetailsVC: UIViewController {
     
     private func setInfo() {
         profileImage.image = UIImage(named: profileDetails.image!)
-        profileName.text = profileDetails.name
-        profileEmail.text = profileDetails.email
-        profilePhone.text = profileDetails.phone
+        profileName.text = profileDetails.name ?? "Maria Smith"
+        profileEmail.text = profileDetails.email ?? "m.smith@gmail.com"
+        profilePhone.text = profileDetails.phone ?? "+48 000 000 000"
         addressTitleLabel.text = "Adres"
-        addressLabel.text = profileDetails.address
+        addressLabel.text = profileDetails.address ?? "ul. Świeradowska 77, 50-559 Wrocław"
         companyTitleLabel.text = "Firma"
-        companyLabel.text = profileDetails.company
+        companyLabel.text = profileDetails.company ?? "Applover Software House , ul. Świeradowska 77, 50-559 Wrocław"
         siteTitleLabel.text = "Strona"
-        siteLabel.text = profileDetails.website
+        siteLabel.text = profileDetails.website ?? "Applover.pl"
         activityLabel.text = "Aktywność"
     }
 
@@ -159,8 +161,8 @@ extension ProfileDetailsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ActivityCell
         let currentItem = postsList[indexPath.row] 
-        cell.postTitle.text = currentItem.postTitle
-        cell.postBody.text = currentItem.postBody
+        cell.postTitle.text = currentItem.postTitle ?? "No posts"
+        cell.postBody.text = currentItem.postBody ?? "No posts"
         cell.selectionStyle = .none
         return cell
     }
@@ -186,15 +188,23 @@ extension ProfileDetailsVC: ProfileDetailsViewDelegate {
     }
     
     func showProfileDetailsError() {
-        let message = "Error getting data from API."
-        let alert = UIAlertController.errorAlert(withMessage: message)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_: UIAlertAction!) in
-        }))
+        let alert = CustomErrorAlert.setUpErrorAlert(nil)
         present(alert, animated: true)
     }
     
     func showDownloadPostsDataError(withMessage: String?) {
         let alert = CustomErrorAlert.setUpErrorAlert(withMessage)
         present(alert, animated: true)
+    }
+    
+    func showProgress() {
+        HUD.show(.progress)
+    }
+
+    func hideProgress() {
+        DispatchQueue.main.async {
+            self.tableView.refreshControl?.endRefreshing()
+            HUD.hide()
+        }
     }
 }

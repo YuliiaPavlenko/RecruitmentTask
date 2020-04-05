@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class ProfileViewController: UIViewController {
     let tableView = UITableView()
@@ -36,6 +37,7 @@ class ProfileViewController: UIViewController {
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.separatorColor = Colors.separatorColor
         tableView.register(ProfileCell.self, forCellReuseIdentifier: cellId)
+        showProgress()
         refreshData()
     }
     
@@ -70,9 +72,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProfileCell
         let currentItem = profilesList[indexPath.row]
-        cell.userNameLabel.text = currentItem.name
-        cell.userEmailLabel.text = currentItem.email
-        cell.userPhoneLabel.text = currentItem.phone
+        cell.userNameLabel.text = currentItem.name ?? "Empty name"
+        cell.userEmailLabel.text = currentItem.email ?? "Empty email"
+        cell.userPhoneLabel.text = currentItem.phone ?? "+00 000 000 000"
         cell.profileImage.image = UIImage(named: currentItem.image!)
         return cell
     }
@@ -99,12 +101,22 @@ extension ProfileViewController: ProfileViewDelegate {
     
     func showProfileDetails() {
         let detailsVC = ProfileDetailsVC()
-        
         navigationController?.pushViewController(detailsVC, animated: true)
     }
     
     func showDownloadUsersDataError(withMessage: String?) {
         let alert = CustomErrorAlert.setUpErrorAlert(withMessage)
         present(alert, animated: true)
+    }
+    
+    func showProgress() {
+        HUD.show(.progress)
+    }
+
+    func hideProgress() {
+        DispatchQueue.main.async {
+            self.tableView.refreshControl?.endRefreshing()
+            HUD.hide()
+        }
     }
 }
