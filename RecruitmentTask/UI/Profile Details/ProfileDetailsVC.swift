@@ -60,7 +60,6 @@ class ProfileDetailsVC: UIViewController {
         view.addSubview(addressStackView)
         view.addSubview(companyStackView)
         view.addSubview(siteStackView)
-//        editImageView.setRounded()
         editImageView.layer.masksToBounds = true
         editImageView.layer.cornerRadius = editImageView.bounds.width / 2
         
