@@ -38,7 +38,6 @@
 		AF564F7E24360875000612F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F7D24360875000612F5 /* AppDelegate.swift */; };
 		AF564F8224360875000612F5 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F8124360875000612F5 /* StartVC.swift */; };
 		AF564F8724360876000612F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF564F8624360876000612F5 /* Assets.xcassets */; };
-		AF564F8A24360876000612F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF564F8824360876000612F5 /* LaunchScreen.storyboard */; };
 		AF564F96243616F5000612F5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F95243616F5000612F5 /* Colors.swift */; };
 		AF564F9824362DE2000612F5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F9724362DE2000612F5 /* Fonts.swift */; };
 		AFBE8A3B243667ED005BFA96 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBE8A3A243667ED005BFA96 /* ProfilePresenter.swift */; };
@@ -80,7 +79,6 @@
 		AF564F7D24360875000612F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF564F8124360875000612F5 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
 		AF564F8624360876000612F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AF564F8924360876000612F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF564F8B24360876000612F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF564F95243616F5000612F5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		AF564F9724362DE2000612F5 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -215,12 +213,11 @@
 		AF564F7C24360875000612F5 /* RecruitmentTask */ = {
 			isa = PBXGroup;
 			children = (
-				AF49F7DB24391E0400880716 /* Data */,
-				AF49F7C524379D7400880716 /* Utils */,
 				AF564F7D24360875000612F5 /* AppDelegate.swift */,
+				AF49F7DB24391E0400880716 /* Data */,
 				AF564F9124361662000612F5 /* UI */,
-				AF564F8824360876000612F5 /* LaunchScreen.storyboard */,
 				AF49F7BC2437982A00880716 /* Resources */,
+				AF49F7C524379D7400880716 /* Utils */,
 				AF564F8B24360876000612F5 /* Info.plist */,
 			);
 			path = RecruitmentTask;
@@ -348,7 +345,6 @@
 			files = (
 				AF49F7D32438D36700880716 /* Raleway-Regular.ttf in Resources */,
 				AF49F7D42438D36700880716 /* Raleway-SemiBold.ttf in Resources */,
-				AF564F8A24360876000612F5 /* LaunchScreen.storyboard in Resources */,
 				AF564F8724360876000612F5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,17 +434,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		AF564F8824360876000612F5 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AF564F8924360876000612F5 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		AF564F8C24360876000612F5 /* Debug */ = {
