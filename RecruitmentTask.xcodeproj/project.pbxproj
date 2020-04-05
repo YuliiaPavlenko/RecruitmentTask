@@ -32,6 +32,8 @@
 		AF49F7F72439CBFE00880716 /* UIAlertController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7F62439CBFE00880716 /* UIAlertController+Utils.swift */; };
 		AF49F7F92439D24500880716 /* ProfileDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7F82439D24500880716 /* ProfileDetailsPresenter.swift */; };
 		AF49F7FB2439D26900880716 /* ProfileDetailsItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7FA2439D26900880716 /* ProfileDetailsItemViewModel.swift */; };
+		AF49F7FE2439D6EF00880716 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7FD2439D6EF00880716 /* Cache.swift */; };
+		AF49F8002439F04000880716 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7FF2439F04000880716 /* PostViewModel.swift */; };
 		AF564F7E24360875000612F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F7D24360875000612F5 /* AppDelegate.swift */; };
 		AF564F8224360875000612F5 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F8124360875000612F5 /* StartVC.swift */; };
 		AF564F8724360876000612F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF564F8624360876000612F5 /* Assets.xcassets */; };
@@ -70,6 +72,8 @@
 		AF49F7F62439CBFE00880716 /* UIAlertController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Utils.swift"; sourceTree = "<group>"; };
 		AF49F7F82439D24500880716 /* ProfileDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsPresenter.swift; sourceTree = "<group>"; };
 		AF49F7FA2439D26900880716 /* ProfileDetailsItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsItemViewModel.swift; sourceTree = "<group>"; };
+		AF49F7FD2439D6EF00880716 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		AF49F7FF2439F04000880716 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		AF564F7A24360875000612F5 /* RecruitmentTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecruitmentTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF564F7D24360875000612F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF564F8124360875000612F5 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 				AF49F7C92437D89300880716 /* ProfileDetailsVC.swift */,
 				AF49F7F82439D24500880716 /* ProfileDetailsPresenter.swift */,
 				AF49F7FA2439D26900880716 /* ProfileDetailsItemViewModel.swift */,
+				AF49F7FF2439F04000880716 /* PostViewModel.swift */,
 				AF49F7CD2438C4A000880716 /* ActivityCell.swift */,
 			);
 			path = "Profile Details";
@@ -146,6 +151,7 @@
 		AF49F7DB24391E0400880716 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				AF49F7FC2439D6D400880716 /* Cache */,
 				AF49F7E924391F5100880716 /* DTO */,
 				AF49F7DC24391E1600880716 /* Networking */,
 			);
@@ -176,6 +182,14 @@
 				AF49F7F224391FA900880716 /* User.swift */,
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		AF49F7FC2439D6D400880716 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				AF49F7FD2439D6EF00880716 /* Cache.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 		AF564F7124360875000612F5 = {
@@ -385,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF49F8002439F04000880716 /* PostViewModel.swift in Sources */,
 				AF49F7E624391E8800880716 /* NetworkManager.swift in Sources */,
 				AF49F7E024391E6000880716 /* ErrorInfo.swift in Sources */,
 				AF49F7DE24391E4800880716 /* ResponseValidator.swift in Sources */,
@@ -401,6 +416,7 @@
 				AF49F7CA2437D89300880716 /* ProfileDetailsVC.swift in Sources */,
 				AF564F8224360875000612F5 /* StartVC.swift in Sources */,
 				AF49F7EF24391F8B00880716 /* Geo.swift in Sources */,
+				AF49F7FE2439D6EF00880716 /* Cache.swift in Sources */,
 				AFBE8A3B243667ED005BFA96 /* ProfilePresenter.swift in Sources */,
 				AF49F7E224391E7000880716 /* Router.swift in Sources */,
 				AF49F7E424391E7A00880716 /* Config.swift in Sources */,

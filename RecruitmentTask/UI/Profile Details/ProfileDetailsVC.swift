@@ -11,6 +11,9 @@ import UIKit
 class ProfileDetailsVC: UIViewController {
     let tableView = UITableView()
     let cellId = "cellId"
+    var profileDetailsPresenter = ProfileDetailsPresenter()
+    var profileDetails = ProfileDetailsItemViewModel()
+    var postsList = [PostViewModel]()
     
     // MARK: - Create UI Elements
     private let profileImage: UIImageView = {
@@ -89,15 +92,20 @@ class ProfileDetailsVC: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileDetailsPresenter.viewDelegate = self
         view.backgroundColor = .white
         customizeNavigationBar()
         addSubviews()
         setConstraints()
-        addTestInfo()
         setupTableView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ActivityCell.self, forCellReuseIdentifier: cellId)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        profileDetailsPresenter.viewIsPrepared()
     }
       
     override func viewWillDisappear(_ animated: Bool) {
@@ -125,30 +133,32 @@ class ProfileDetailsVC: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    private func addTestInfo() {
-        profileName.text = "Maria Smith"
-        profileEmail.text = "m.smith@gmail.com"
-        profilePhone.text = "+48 000 000 000"
+    private func setInfo() {
+        profileName.text = profileDetails.name
+        profileEmail.text = profileDetails.email
+        profilePhone.text = profileDetails.phone
         addressTitleLabel.text = "Adres"
-        addressLabel.text = "ul. Świeradowska 77, 50-559 Wrocław"
+        addressLabel.text = profileDetails.address
         companyTitleLabel.text = "Firma"
-        companyLabel.text = "Applover Software House, ul. Świeradowska 77, 50-559 Wrocław"
+        companyLabel.text = profileDetails.company
         siteTitleLabel.text = "Strona"
-        siteLabel.text = "Applover.pl"
+        siteLabel.text = profileDetails.website
         activityLabel.text = "Aktywność"
     }
+
 }
 
 // MARK: - UITableView Delegate & DataSource
 extension ProfileDetailsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return postsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ActivityCell
-        cell.postTitle.text = "Tytuł"
-        cell.postBody.text = "Applover Software House, ul. Świeradowska 77, 50-559 Wrocław. Applover Software House, ul. Świeradowska 77, 50-559 Wrocław. Applover Software House, ul. Świeradowska 77, 50-559 Wrocław"
+        let currentItem = postsList[indexPath.row] 
+        cell.postTitle.text = currentItem.postTitle
+        cell.postBody.text = currentItem.postBody
         return cell
     }
     
@@ -156,4 +166,33 @@ extension ProfileDetailsVC: UITableViewDelegate, UITableViewDataSource {
         return 74
     }
     
+}
+
+// MARK: ProfileDetailsViewDelegate
+extension ProfileDetailsVC: ProfileDetailsViewDelegate {
+    func showProfileDetails(_ data: ProfileDetailsItemViewModel) {
+        profileDetails = data
+        setInfo()
+    }
+    
+    func showPosts(_ data: [PostViewModel]) {
+        postsList = data
+        tableView.reloadData()
+    }
+    
+    func showProfileDetailsError() {
+        let message = "Error getting data from API."
+        let alert = UIAlertController.errorAlert(withMessage: message)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_: UIAlertAction!) in
+        }))
+        present(alert, animated: true)
+    }
+    
+    func showDownloadPostsDataError(withMessage: String?) {
+        let message = "Error getting data from API." + " \(String(describing: withMessage!))"
+        let alert = UIAlertController.errorAlert(withMessage: message)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_: UIAlertAction!) in
+        }))
+        present(alert, animated: true)
+    }
 }

@@ -6,4 +6,56 @@
 //  Copyright © 2020 Yuliia Pavlenko. All rights reserved.
 //
 
-import Foundation
+protocol ProfileDetailsViewDelegate: class {
+    func showProfileDetails(_ data: ProfileDetailsItemViewModel)
+    func showProfileDetailsError()
+    func showPosts(_ data: [PostViewModel])
+    func showDownloadPostsDataError(withMessage: String?)
+    
+}
+
+class ProfileDetailsPresenter {
+    var profileDetails = [ProfileDetailsItemViewModel]()
+    var postsList = [PostViewModel]()
+    weak var viewDelegate: ProfileDetailsViewDelegate?
+    
+    func viewIsPrepared() {
+        let selectedUser = Cache.shared.getSelectedUser()
+
+    
+        if let user = selectedUser {
+            let profileData = ProfileDetailsItemViewModel(name: user.name, email: user.email, phone: user.phone, address: prepareAdrressToDisplay(user.address), company: prepareCompanyAddressToDisplay(user.company), site: user.website)
+            viewDelegate?.showProfileDetails(profileData)
+            
+            
+            NetworkManager.shared.getPostsForUser(userId: user.id) { [weak self] (posts, error) in
+                print()
+                guard let self = self else { return }
+                if let posts = posts {
+                    
+                    for post in posts {
+                        let post = PostViewModel(postTitle: post.title, postBody: post.body)
+                        self.postsList.append(post)
+                    }
+                    self.viewDelegate?.showPosts(self.postsList)
+                } else {
+                    self.viewDelegate?.showDownloadPostsDataError(withMessage: error?.debugDescription)
+                }
+                
+//                viewDelegate.updateListWithPosts(posts)
+                
+            }
+     
+        } else {
+            viewDelegate?.showProfileDetailsError()
+        }
+    }
+    
+    private func prepareAdrressToDisplay(_ address: Address) -> String {
+        return "\(address.street), \(address.zipcode) \(address.city)"
+    }
+    
+    private func prepareCompanyAddressToDisplay(_ company: Company) -> String {
+        return "\(company.name), \(company.catchPhrase), \(company.bs)"
+    }
+}

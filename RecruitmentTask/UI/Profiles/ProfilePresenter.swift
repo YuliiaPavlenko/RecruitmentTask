@@ -18,9 +18,13 @@ protocol ProfileViewDelegate: class {
 class ProfilePresenter {
     var usersList = [ProfileItemViewModel]()
     
+    var originalUsers = [User]()
+    
     weak var viewDelegate: ProfileViewDelegate?
 
-    func profileClicked() {
+    func profileClicked(_ atIndex: Int) {
+        Cache.shared.setSelectedUser(originalUsers[atIndex])
+        
         viewDelegate?.showProfileDetails()
     }
     
@@ -30,6 +34,8 @@ class ProfilePresenter {
 //            self.viewDelegate?.hideProgress()
 
             if let users = users {
+                self.originalUsers = users
+                
                 for user in users {
                     let user = ProfileItemViewModel(name: user.name, email: user.email, phone: user.phone)
                     self.usersList.append(user)

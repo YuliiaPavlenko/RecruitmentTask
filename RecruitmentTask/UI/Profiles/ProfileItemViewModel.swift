@@ -6,8 +6,6 @@
 //  Copyright © 2020 Yuliia Pavlenko. All rights reserved.
 //
 
-import Foundation
-
 struct ProfileItemViewModel {
     var name: String?
     var email: String?

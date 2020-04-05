@@ -11,4 +11,8 @@ import Foundation
 class Router {
     static let posts = Config.baseURL + "/posts"
     static let users = Config.baseURL + "/users"
+    
+    static func postsForUser(_ id: Int) -> String {
+        return posts + "?userId=\(id)"
+    }
 }

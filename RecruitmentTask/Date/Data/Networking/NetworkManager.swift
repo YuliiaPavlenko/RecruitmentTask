@@ -48,14 +48,6 @@ class NetworkManager {
                 completion (nil, VCError.parsingResponseError(errorInfo: errorInfo))
             }
         
-//        // Serialize the data into an object
-//        do {
-//            let json = try JSONDecoder().decode([Post].self, from: data! )
-//                //try JSONSerialization.jsonObject(with: data!, options: [])
-//            print(json)
-//        } catch {
-//            print("Error during JSON serialization: \(error.localizedDescription)")
-//        }
         })
         task.resume()
     }
@@ -83,17 +75,38 @@ class NetworkManager {
                     completion (nil, VCError.parsingResponseError(errorInfo: errorInfo))
                 }
             
-    //        // Serialize the data into an object
-    //        do {
-    //            let json = try JSONDecoder().decode([Post].self, from: data! )
-    //                //try JSONSerialization.jsonObject(with: data!, options: [])
-    //            print(json)
-    //        } catch {
-    //            print("Error during JSON serialization: \(error.localizedDescription)")
-    //        }
+
             })
             task.resume()
         }
+    
+    func getPostsForUser(userId: Int, completion: @escaping (([Post]?, VCError?) -> Void)) {
+        let url = URL(string: Router.postsForUser(userId))!
+        let task = session.dataTask(with: url, completionHandler: { data, response, error in
+            
+            if let err = validateApiResponse(response: response, error: error){
+                completion(nil, err)
+                return
+            }
+            
+            do {
+                let json = try JSONDecoder().decode([Post].self, from: data! )
+                
+                print(json)
+                completion(json, nil)
+                
+            } catch {
+                print("Error during JSON serialization: \(error.localizedDescription)")
+                var errorInfo = ErrorInfo()
+                errorInfo.message = "Error during JSON serialization: \(error.localizedDescription)"
+                 
+                completion (nil, VCError.parsingResponseError(errorInfo: errorInfo))
+            }
+        
+
+        })
+        task.resume()
+    }
     
     
 }
