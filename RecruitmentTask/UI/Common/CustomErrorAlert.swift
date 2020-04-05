@@ -10,10 +10,10 @@ import UIKit
 
 class CustomErrorAlert {
 
-    static func setUpErrorAlert(_ withMessage: String?) -> UIAlertController {
-        let message = "Error getting data from API." + " \(String(describing: withMessage!))"
-        let alert = UIAlertController.errorAlert(withMessage: message)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_: UIAlertAction!) in
+    static func setUpErrorAlert(_ withMessage: DisplayErrorModel?) -> UIAlertController {
+        let erroTitle = withMessage?.title
+        let alert = UIAlertController(title: erroTitle, message: withMessage?.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_: UIAlertAction!) in
         }))
         return alert
     }

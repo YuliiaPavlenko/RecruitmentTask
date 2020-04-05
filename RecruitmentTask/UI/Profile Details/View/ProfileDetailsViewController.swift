@@ -180,7 +180,7 @@ extension ProfileDetailsViewController: ProfileDetailsViewDelegate {
         present(alert, animated: true)
     }
 
-    func showDownloadPostsDataError(withMessage: String?) {
+    func showDownloadPostsDataError(withMessage: DisplayErrorModel) {
         let alert = CustomErrorAlert.setUpErrorAlert(withMessage)
         present(alert, animated: true)
     }

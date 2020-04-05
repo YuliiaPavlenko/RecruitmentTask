@@ -10,7 +10,7 @@ protocol ProfileDetailsViewDelegate: class {
     func showProfileDetails(_ data: ProfileDetailsItemViewModel)
     func showProfileDetailsError()
     func showPosts(_ data: [PostViewModel])
-    func showDownloadPostsDataError(withMessage: String?)
+    func showDownloadPostsDataError(withMessage: DisplayErrorModel)
     func showProgress()
     func hideProgress()
 }
@@ -41,7 +41,9 @@ class ProfileDetailsPresenter {
                     }
                     self.viewDelegate?.showPosts(self.postsList)
                 } else {
-                    self.viewDelegate?.showDownloadPostsDataError(withMessage: error?.debugDescription)
+                    if let error = error {
+                        self.viewDelegate?.showDownloadPostsDataError(withMessage: DisplayError.posts.displayMessage(rtError: error))
+                    }
                 }
 
 //                viewDelegate.updateListWithPosts(posts)

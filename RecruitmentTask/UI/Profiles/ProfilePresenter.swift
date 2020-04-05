@@ -11,7 +11,7 @@ import UIKit
 protocol ProfileViewDelegate: class {
     func showProfileDetails()
     func showUsersData(_ data: [ProfileItemViewModel])
-    func showDownloadUsersDataError(withMessage: String?)
+    func showDownloadUsersDataError(withMessage: DisplayErrorModel)
     func showProgress()
     func hideProgress()
 }
@@ -48,7 +48,9 @@ class ProfilePresenter {
                 
                 self.viewDelegate?.showUsersData(self.usersList)
             } else {
-                self.viewDelegate?.showDownloadUsersDataError(withMessage: error?.debugDescription)
+                if let error = error {
+                    self.viewDelegate?.showDownloadUsersDataError(withMessage: DisplayError.usersList.displayMessage(rtError: error))
+                }
             }
         }
     }

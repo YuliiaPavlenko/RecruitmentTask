@@ -11,8 +11,8 @@ import Foundation
 func validateApiResponse(response: URLResponse?, error: Error?) -> RTError? {
     var errorInfo = ErrorInfo()
 
-    if let er = error {
-        errorInfo.message = er.localizedDescription
+    if let error = error {
+        errorInfo.message = error.localizedDescription
         return RTError.communicationError(errorInfo: errorInfo)
     }
 

@@ -27,7 +27,7 @@ class NetworkManager {
             }
 
             do {
-                let json = try JSONDecoder().decode([User].self, from: data! )
+                let json = try JSONDecoder().decode([User].self, from: data!)
 
                 completion(json, nil)
             } catch {

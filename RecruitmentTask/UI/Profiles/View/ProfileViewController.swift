@@ -108,7 +108,7 @@ extension ProfileViewController: ProfileViewDelegate {
         navigationController?.pushViewController(detailsVC, animated: true)
     }
 
-    func showDownloadUsersDataError(withMessage: String?) {
+    func showDownloadUsersDataError(withMessage: DisplayErrorModel) {
         let alert = CustomErrorAlert.setUpErrorAlert(withMessage)
         present(alert, animated: true)
     }
