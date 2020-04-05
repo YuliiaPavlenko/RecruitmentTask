@@ -19,7 +19,6 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
         customizeNavigationBar()
-        refreshData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -37,6 +36,7 @@ class ProfileViewController: UIViewController {
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.separatorColor = Colors.separatorColor
         tableView.register(ProfileCell.self, forCellReuseIdentifier: cellId)
+        refreshData()
     }
     
     func setupTableView() {
@@ -81,7 +81,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        profilePresenter.profileClicked()
+        profilePresenter.profileClicked(indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -91,7 +91,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 extension ProfileViewController: ProfileViewDelegate {
     func showUsersData(_ data: [ProfileItemViewModel]) {
         profilesList = data
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func showProfileDetails() {
@@ -101,10 +103,7 @@ extension ProfileViewController: ProfileViewDelegate {
     }
     
     func showDownloadUsersDataError(withMessage: String?) {
-        let message = "Error getting data from API." + " \(String(describing: withMessage!))"
-        let alert = UIAlertController.errorAlert(withMessage: message)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_: UIAlertAction!) in
-        }))
+        let alert = CustomErrorAlert.setUpErrorAlert(withMessage)
         present(alert, animated: true)
     }
 }

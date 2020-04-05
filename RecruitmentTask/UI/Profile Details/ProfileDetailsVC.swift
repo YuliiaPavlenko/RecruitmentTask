@@ -11,6 +11,7 @@ import UIKit
 class ProfileDetailsVC: UIViewController {
     let tableView = UITableView()
     let cellId = "cellId"
+    let rowHeight: CGFloat = 74
     var profileDetailsPresenter = ProfileDetailsPresenter()
     var profileDetails = ProfileDetailsItemViewModel()
     var postsList = [PostViewModel]()
@@ -163,7 +164,7 @@ extension ProfileDetailsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 74
+        return rowHeight
     }
     
 }
@@ -177,7 +178,9 @@ extension ProfileDetailsVC: ProfileDetailsViewDelegate {
     
     func showPosts(_ data: [PostViewModel]) {
         postsList = data
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func showProfileDetailsError() {
@@ -189,10 +192,7 @@ extension ProfileDetailsVC: ProfileDetailsViewDelegate {
     }
     
     func showDownloadPostsDataError(withMessage: String?) {
-        let message = "Error getting data from API." + " \(String(describing: withMessage!))"
-        let alert = UIAlertController.errorAlert(withMessage: message)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_: UIAlertAction!) in
-        }))
+        let alert = CustomErrorAlert.setUpErrorAlert(withMessage)
         present(alert, animated: true)
     }
 }
