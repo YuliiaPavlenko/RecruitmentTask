@@ -12,7 +12,7 @@ import PKHUD
 class ProfileDetailsVC: UIViewController {
     let tableView = UITableView()
     let cellId = "cellId"
-    let rowHeight: CGFloat = 74
+    let rowHeight: CGFloat = 90
     var profileDetailsPresenter = ProfileDetailsPresenter()
     var profileDetails = ProfileDetailsItemViewModel()
     var postsList = [PostViewModel]()
@@ -26,15 +26,11 @@ class ProfileDetailsVC: UIViewController {
         return imageView
     }()
     
-    private let editImageView: UIImageView = {
-        let imageView = UIImageView()
+    private let editImageView: RoundedImageView = {
+        let imageView = RoundedImageView()
         imageView.backgroundColor = Colors.green
-        imageView.image = UIImage(named: "pencil.png")
-//        imageView.layer.cornerRadius = imageView.frame.height / 2
-//        imageView.clipsToBounds = true
+//        imageView.image = UIImage(named: "pencil.png")
         imageView.contentMode = .scaleAspectFill
-//        imageView.clipsToBounds = true
-//        imageView.setRounded()
         return imageView
     }()
 
@@ -65,11 +61,9 @@ class ProfileDetailsVC: UIViewController {
         view.addSubview(addressStackView)
         view.addSubview(companyStackView)
         view.addSubview(siteStackView)
-        editImageView.layer.masksToBounds = true
-        editImageView.layer.cornerRadius = editImageView.bounds.width / 2
         
         profileImage.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: view.frame.size.height * 0.4, enableInsets: false)
-        editImageView.anchor(top: nil, left: nil, bottom: profileImage.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -33, paddingRight: 26, width: 66, height: 66, enableInsets: false)
+        editImageView.anchor(top: nil, left: nil, bottom: profileImage.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -33, paddingRight: 26, width: 66, height: 66, enableInsets: true)
         profileInfoStackView.anchor(top: nil, left: view.leftAnchor, bottom: profileImage.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 25, paddingBottom: 16, paddingRight: 0, width: 0, height: 0, enableInsets: false)
         addressStackView.anchor(top: profileImage.bottomAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 28, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
         companyStackView.anchor(top: addressStackView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 14, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 0, enableInsets: false)

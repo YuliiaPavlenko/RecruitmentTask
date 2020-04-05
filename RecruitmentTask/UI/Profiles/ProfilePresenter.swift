@@ -52,7 +52,6 @@ class ProfilePresenter {
         let hardcodedImages = ["Userpic.png", "Userpic-1.png", "Userpic-2.png"]
         let imageIndex = Int(arc4random_uniform(UInt32(hardcodedImages.count)))
         let selectedImage = hardcodedImages[imageIndex]
-//        Cache.shared.setUserImage(selectedImage)
         return selectedImage
     }
 }
