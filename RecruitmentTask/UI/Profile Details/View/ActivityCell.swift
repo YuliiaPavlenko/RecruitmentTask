@@ -10,17 +10,9 @@ import UIKit
 
 class ActivityCell: UITableViewCell {
 
-    public let postTitle = ProfileDetailsViewElements.createTitleLabel()
-    public let postBody = ProfileDetailsViewElements.createPostLabel()
-
-    private let profileImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "testUserPicture.png")
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 8.0
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+    let postTitle = ProfileDetailsViewElements.createTitleLabel()
+    let postBody = ProfileDetailsViewElements.createPostLabel()
+    let profileImage = ProfileDetailsViewElements.createPostImage()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

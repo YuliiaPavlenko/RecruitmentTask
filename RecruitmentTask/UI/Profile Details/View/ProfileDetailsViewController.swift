@@ -151,6 +151,7 @@ extension ProfileDetailsViewController: UITableViewDelegate, UITableViewDataSour
         let currentItem = postsList[indexPath.row]
         cell.postTitle.text = currentItem.postTitle?.capitalized ?? "No posts"
         cell.postBody.text = currentItem.postBody?.capitalized ?? "No posts"
+        cell.profileImage.image = UIImage(named: currentItem.postImage)
         cell.selectionStyle = .none
         return cell
     }

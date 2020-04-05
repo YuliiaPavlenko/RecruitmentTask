@@ -31,6 +31,14 @@ class ProfileDetailsViewElements {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }
+    
+    static func createPostImage() -> UIImageView {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 8.0
+        imageView.clipsToBounds = true
+        return imageView
+    }
 
     static func createTitleLabel() -> UILabel {
         let titleLabel = UILabel()

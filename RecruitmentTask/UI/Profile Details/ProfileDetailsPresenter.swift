@@ -6,6 +6,8 @@
 //  Copyright © 2020 Yuliia Pavlenko. All rights reserved.
 //
 
+import UIKit
+
 protocol ProfileDetailsViewDelegate: class {
     func showProfileDetails(_ data: ProfileDetailsItemViewModel)
     func showProfileDetailsError()
@@ -36,7 +38,7 @@ class ProfileDetailsPresenter {
                 if let posts = posts {
 
                     for post in posts {
-                        let post = PostViewModel(postTitle: post.title, postBody: post.body)
+                        let post = PostViewModel(postTitle: post.title, postBody: post.body, postImage: self.getRandomImage())
                         self.postsList.append(post)
                     }
                     self.viewDelegate?.showPosts(self.postsList)
@@ -45,9 +47,6 @@ class ProfileDetailsPresenter {
                         self.viewDelegate?.showDownloadPostsDataError(withMessage: DisplayError.posts.displayMessage(rtError: error))
                     }
                 }
-
-//                viewDelegate.updateListWithPosts(posts)
-
             }
 
         } else {
@@ -61,5 +60,12 @@ class ProfileDetailsPresenter {
 
     private func prepareCompanyAddressToDisplay(_ company: Company) -> String {
         return "\(company.name), \(company.catchPhrase), \(company.bs)"
+    }
+    
+    private func getRandomImage() -> String {
+        let hardcodedImages = ["postImage.png", "postImage-1.png", "postImage-2.png"]
+        let imageIndex = Int(arc4random_uniform(UInt32(hardcodedImages.count)))
+        let selectedImage = hardcodedImages[imageIndex]
+        return selectedImage
     }
 }

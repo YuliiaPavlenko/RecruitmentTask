@@ -9,9 +9,11 @@
 struct PostViewModel {
     var postTitle: String?
     var postBody: String?
+    var postImage: String
 
-    init(postTitle: String?, postBody: String?) {
+    init(postTitle: String?, postBody: String?, postImage: String) {
         self.postTitle = postTitle
         self.postBody = postBody
+        self.postImage = postImage
     }
 }
