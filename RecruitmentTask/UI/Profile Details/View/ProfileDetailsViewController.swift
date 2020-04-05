@@ -149,8 +149,8 @@ extension ProfileDetailsViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ActivityCell
         let currentItem = postsList[indexPath.row]
-        cell.postTitle.text = currentItem.postTitle ?? "No posts"
-        cell.postBody.text = currentItem.postBody ?? "No posts"
+        cell.postTitle.text = currentItem.postTitle?.capitalized ?? "No posts"
+        cell.postBody.text = currentItem.postBody?.capitalized ?? "No posts"
         cell.selectionStyle = .none
         return cell
     }
