@@ -1,5 +1,5 @@
 //
-//  CustomLabel.swift
+//  ProfileDetailsViewElements.swift
 //  RecruitmentTask
 //
 //  Created by Yuliia Pavlenko on 04/04/2020.
@@ -8,7 +8,29 @@
 
 import UIKit
 
-class CustomLabel {
+class ProfileDetailsViewElements {
+    
+    static func createProfileImage() -> UIImageView {
+        let imageView = UIImageView()
+        imageView.backgroundColor = Colors.separatorColor
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        return imageView
+    }
+
+    static func createEditView() -> RoundedView {
+        let view = RoundedView()
+        view.backgroundColor = Colors.green
+        view.contentMode = .scaleAspectFill
+        return view
+    }
+
+    static func createEditImageView() -> UIImageView {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "pencil.png")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }
 
     static func createTitleLabel() -> UILabel {
         let titleLabel = UILabel()
@@ -52,5 +74,13 @@ class CustomLabel {
         postLabel.textAlignment = .left
         postLabel.numberOfLines = 0
         return postLabel
+    }
+    
+    static func createVerticalStackView(arrangedSubviews: [UILabel]) -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
+        stackView.distribution = .equalSpacing
+        stackView.axis = .vertical
+        stackView.spacing = 7
+        return stackView
     }
 }

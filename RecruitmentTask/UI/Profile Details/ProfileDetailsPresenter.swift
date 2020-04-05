@@ -11,6 +11,7 @@ protocol ProfileDetailsViewDelegate: class {
     func showProfileDetailsError()
     func showPosts(_ data: [PostViewModel])
     func showDownloadPostsDataError(withMessage: String?)
+    func showProgress()
     func hideProgress()
 }
 
@@ -26,7 +27,8 @@ class ProfileDetailsPresenter {
         if let user = selectedUser {
             let profileData = ProfileDetailsItemViewModel(name: user.name, email: user.email, phone: user.phone, image: userImage, address: prepareAdrressToDisplay(user.address), company: prepareCompanyAddressToDisplay(user.company), site: user.website)
             viewDelegate?.showProfileDetails(profileData)
-
+            
+            viewDelegate?.showProgress()
             NetworkManager.shared.getPostsForUser(userId: user.id) { [weak self] (posts, error) in
                 guard let self = self else { return }
                 self.viewDelegate?.hideProgress()

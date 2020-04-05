@@ -12,55 +12,36 @@ import PKHUD
 class ProfileDetailsViewController: UIViewController {
     let tableView = UITableView()
     let cellId = "cellId"
-    let rowHeight: CGFloat = 90
     var profileDetailsPresenter = ProfileDetailsPresenter()
     var profileDetails = ProfileDetailsItemViewModel()
     var postsList = [PostViewModel]()
 
     // MARK: - Create UI Elements
-    private let profileImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = Colors.separatorColor
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+    private let profileImage = ProfileDetailsViewElements.createProfileImage()
+    private let editView = ProfileDetailsViewElements.createEditView()
+    private let editImageView = ProfileDetailsViewElements.createEditImageView()
 
-    private let editView: RoundedView = {
-        let view = RoundedView()
-        view.backgroundColor = Colors.green
-        view.contentMode = .scaleAspectFill
-        return view
-    }()
+    private let profileName = ProfileDetailsViewElements.createProfileNameLabel()
+    private let profileEmail = ProfileDetailsViewElements.createProfileDetailsLabel()
+    private let profilePhone = ProfileDetailsViewElements.createProfileDetailsLabel()
 
-    private let editImageView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.image = UIImage(named: "pencil.png")
-            imageView.contentMode = .scaleAspectFit
-            return imageView
-        }()
+    private let addressTitleLabel = ProfileDetailsViewElements.createTitleLabel()
+    private let addressLabel = ProfileDetailsViewElements.createAddressLabel()
 
-    private let profileName = CustomLabel.createProfileNameLabel()
-    private let profileEmail = CustomLabel.createProfileDetailsLabel()
-    private let profilePhone = CustomLabel.createProfileDetailsLabel()
+    private let companyTitleLabel = ProfileDetailsViewElements.createTitleLabel()
+    private let companyLabel = ProfileDetailsViewElements.createAddressLabel()
 
-    private let addressTitleLabel = CustomLabel.createTitleLabel()
-    private let addressLabel = CustomLabel.createAddressLabel()
+    private let siteTitleLabel = ProfileDetailsViewElements.createTitleLabel()
+    private let siteLabel = ProfileDetailsViewElements.createAddressLabel()
 
-    private let companyTitleLabel = CustomLabel.createTitleLabel()
-    private let companyLabel = CustomLabel.createAddressLabel()
-
-    private let siteTitleLabel = CustomLabel.createTitleLabel()
-    private let siteLabel = CustomLabel.createAddressLabel()
-
-    private let activityLabel = CustomLabel.createTitleLabel()
+    private let activityLabel = ProfileDetailsViewElements.createTitleLabel()
 
     // MARK: - Set Constraints
     private func setConstraints() {
-        let profileInfoStackView = CustomStackView.createVerticalStackView(arrangedSubviews: [profileName, profileEmail, profilePhone])
-        let addressStackView = CustomStackView.createVerticalStackView(arrangedSubviews: [addressTitleLabel, addressLabel])
-        let companyStackView = CustomStackView.createVerticalStackView(arrangedSubviews: [companyTitleLabel, companyLabel])
-        let siteStackView = CustomStackView.createVerticalStackView(arrangedSubviews: [siteTitleLabel, siteLabel])
+        let profileInfoStackView = ProfileDetailsViewElements.createVerticalStackView(arrangedSubviews: [profileName, profileEmail, profilePhone])
+        let addressStackView = ProfileDetailsViewElements.createVerticalStackView(arrangedSubviews: [addressTitleLabel, addressLabel])
+        let companyStackView = ProfileDetailsViewElements.createVerticalStackView(arrangedSubviews: [companyTitleLabel, companyLabel])
+        let siteStackView = ProfileDetailsViewElements.createVerticalStackView(arrangedSubviews: [siteTitleLabel, siteLabel])
 
         view.addSubview(profileInfoStackView)
         view.addSubview(addressStackView)
@@ -77,6 +58,28 @@ class ProfileDetailsViewController: UIViewController {
         activityLabel.anchor(top: siteStackView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 14, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        profileDetailsPresenter.viewDelegate = self
+        view.backgroundColor = .white
+        customizeNavigationBar()
+        addSubviews()
+        setConstraints()
+        setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        profileDetailsPresenter.viewIsPrepared()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
     private func addSubviews() {
         view.addSubview(profileImage)
         view.addSubview(profileName)
@@ -90,42 +93,25 @@ class ProfileDetailsViewController: UIViewController {
         view.addSubview(activityLabel)
         view.addSubview(editView)
         editView.addSubview(editImageView)
-        view.addSubview(tableView)
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        profileDetailsPresenter.viewDelegate = self
-        view.backgroundColor = .white
-        customizeNavigationBar()
-        addSubviews()
-        setConstraints()
-        setupTableView()
+    
+    func setupTableView() {
+        view.addSubview(tableView)
+        configureConstraintsForTableView()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ActivityCell.self, forCellReuseIdentifier: cellId)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        showProgress()
-        profileDetailsPresenter.viewIsPrepared()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.shadowImage = nil
-        setNeedsStatusBarAppearanceUpdate()
-    }
-
-    func setupTableView() {
-      tableView.translatesAutoresizingMaskIntoConstraints = false
-      tableView.topAnchor.constraint(equalTo: activityLabel.bottomAnchor).isActive = true
-      tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-      tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-      tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
         tableView.separatorColor = .clear
+    }
+    
+    func configureConstraintsForTableView() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: activityLabel.bottomAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -138,18 +124,18 @@ class ProfileDetailsViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
 
-    private func setInfo() {
+    private func setProfileInformation() {
         profileImage.image = UIImage(named: profileDetails.image!)
         profileName.text = profileDetails.name ?? "Maria Smith"
         profileEmail.text = profileDetails.email ?? "m.smith@gmail.com"
         profilePhone.text = profileDetails.phone ?? "+48 000 000 000"
-        addressTitleLabel.text = "Adres"
+        addressTitleLabel.text = "Address"
         addressLabel.text = profileDetails.address ?? "ul. Świeradowska 77, 50-559 Wrocław"
-        companyTitleLabel.text = "Firma"
+        companyTitleLabel.text = "Company"
         companyLabel.text = profileDetails.company ?? "Applover Software House , ul. Świeradowska 77, 50-559 Wrocław"
-        siteTitleLabel.text = "Strona"
+        siteTitleLabel.text = "Website"
         siteLabel.text = profileDetails.website ?? "Applover.pl"
-        activityLabel.text = "Aktywność"
+        activityLabel.text = "Activity"
     }
 
 }
@@ -170,7 +156,7 @@ extension ProfileDetailsViewController: UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return rowHeight
+        return 90
     }
 
 }
@@ -179,7 +165,7 @@ extension ProfileDetailsViewController: UITableViewDelegate, UITableViewDataSour
 extension ProfileDetailsViewController: ProfileDetailsViewDelegate {
     func showProfileDetails(_ data: ProfileDetailsItemViewModel) {
         profileDetails = data
-        setInfo()
+        setProfileInformation()
     }
 
     func showPosts(_ data: [PostViewModel]) {

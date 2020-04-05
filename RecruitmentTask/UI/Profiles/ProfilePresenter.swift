@@ -12,6 +12,7 @@ protocol ProfileViewDelegate: class {
     func showProfileDetails()
     func showUsersData(_ data: [ProfileItemViewModel])
     func showDownloadUsersDataError(withMessage: String?)
+    func showProgress()
     func hideProgress()
 }
 
@@ -28,9 +29,12 @@ class ProfilePresenter {
         viewDelegate?.showProfileDetails()
     }
 
-    func getUsers() {
+    func viewIsPrepared() {
+        viewDelegate?.showProgress()
+        
         NetworkManager.shared.getUsers { [weak self] (users, error) in
             guard let self = self else { return }
+            
             self.viewDelegate?.hideProgress()
 
             if let users = users {
@@ -41,6 +45,7 @@ class ProfilePresenter {
                     self.usersList.append(user)
                     Cache.shared.setUserImage(self.getRandomImage())
                 }
+                
                 self.viewDelegate?.showUsersData(self.usersList)
             } else {
                 self.viewDelegate?.showDownloadUsersDataError(withMessage: error?.debugDescription)

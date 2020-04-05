@@ -10,8 +10,8 @@ import UIKit
 
 class ActivityCell: UITableViewCell {
 
-    public let postTitle = CustomLabel.createTitleLabel()
-    public let postBody = CustomLabel.createPostLabel()
+    public let postTitle = ProfileDetailsViewElements.createTitleLabel()
+    public let postBody = ProfileDetailsViewElements.createPostLabel()
 
     private let profileImage: UIImageView = {
         let imageView = UIImageView()
@@ -27,7 +27,7 @@ class ActivityCell: UITableViewCell {
         addSubview(postBody)
         addSubview(profileImage)
 
-        let activityStackView = CustomStackView.createVerticalStackView(arrangedSubviews: [postTitle, postBody])
+        let activityStackView = ProfileDetailsViewElements.createVerticalStackView(arrangedSubviews: [postTitle, postBody])
         addSubview(activityStackView)
 
         profileImage.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 16, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 81, height: 74, enableInsets: false)

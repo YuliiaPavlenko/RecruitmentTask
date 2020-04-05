@@ -10,9 +10,8 @@
 		807A3C7C52BC9FFAE392AE04 /* Pods_RecruitmentTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D92ED7CD3B9180DEC33E66 /* Pods_RecruitmentTask.framework */; };
 		AF49F7C724379D9B00880716 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7C624379D9B00880716 /* UIView+Utils.swift */; };
 		AF49F7CA2437D89300880716 /* ProfileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7C92437D89300880716 /* ProfileDetailsViewController.swift */; };
-		AF49F7CC243890BC00880716 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7CB243890BC00880716 /* CustomLabel.swift */; };
+		AF49F7CC243890BC00880716 /* ProfileDetailsViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7CB243890BC00880716 /* ProfileDetailsViewElements.swift */; };
 		AF49F7CE2438C4A000880716 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7CD2438C4A000880716 /* ActivityCell.swift */; };
-		AF49F7D02438C61600880716 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7CF2438C61600880716 /* CustomStackView.swift */; };
 		AF49F7D32438D36700880716 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF49F7D22438D35F00880716 /* Raleway-Regular.ttf */; };
 		AF49F7D42438D36700880716 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF49F7D12438D35F00880716 /* Raleway-SemiBold.ttf */; };
 		AF49F7D62438FBA600880716 /* StartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7D52438FBA600880716 /* StartPresenter.swift */; };
@@ -35,6 +34,7 @@
 		AF49F7FE2439D6EF00880716 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7FD2439D6EF00880716 /* Cache.swift */; };
 		AF49F8002439F04000880716 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7FF2439F04000880716 /* PostViewModel.swift */; };
 		AF49F8022439F69C00880716 /* CustomErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F8012439F69C00880716 /* CustomErrorAlert.swift */; };
+		AF49F807243A556400880716 /* ProfileViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F806243A556400880716 /* ProfileViewElements.swift */; };
 		AF564F7E24360875000612F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F7D24360875000612F5 /* AppDelegate.swift */; };
 		AF564F8224360875000612F5 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F8124360875000612F5 /* StartVC.swift */; };
 		AF564F8724360876000612F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF564F8624360876000612F5 /* Assets.xcassets */; };
@@ -50,9 +50,8 @@
 		28D92ED7CD3B9180DEC33E66 /* Pods_RecruitmentTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecruitmentTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF49F7C624379D9B00880716 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		AF49F7C92437D89300880716 /* ProfileDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsViewController.swift; sourceTree = "<group>"; };
-		AF49F7CB243890BC00880716 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		AF49F7CB243890BC00880716 /* ProfileDetailsViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsViewElements.swift; sourceTree = "<group>"; };
 		AF49F7CD2438C4A000880716 /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
-		AF49F7CF2438C61600880716 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		AF49F7D12438D35F00880716 /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
 		AF49F7D22438D35F00880716 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
 		AF49F7D52438FBA600880716 /* StartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPresenter.swift; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		AF49F7FD2439D6EF00880716 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		AF49F7FF2439F04000880716 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		AF49F8012439F69C00880716 /* CustomErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorAlert.swift; sourceTree = "<group>"; };
+		AF49F806243A556400880716 /* ProfileViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewElements.swift; sourceTree = "<group>"; };
 		AF564F7A24360875000612F5 /* RecruitmentTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecruitmentTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF564F7D24360875000612F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF564F8124360875000612F5 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
@@ -130,10 +130,9 @@
 		AF49F7C82437D87C00880716 /* Profile Details */ = {
 			isa = PBXGroup;
 			children = (
+				AF49F808243A58F500880716 /* View */,
 				AF49F803243A45B500880716 /* ViewModel */,
-				AF49F7C92437D89300880716 /* ProfileDetailsViewController.swift */,
 				AF49F7F82439D24500880716 /* ProfileDetailsPresenter.swift */,
-				AF49F7CD2438C4A000880716 /* ActivityCell.swift */,
 			);
 			path = "Profile Details";
 			sourceTree = "<group>";
@@ -208,6 +207,26 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		AF49F805243A540800880716 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AFBE8A3C24366896005BFA96 /* ProfileViewController.swift */,
+				AFBE8A3E243669D2005BFA96 /* ProfileCell.swift */,
+				AF49F806243A556400880716 /* ProfileViewElements.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AF49F808243A58F500880716 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AF49F7C92437D89300880716 /* ProfileDetailsViewController.swift */,
+				AF49F7CD2438C4A000880716 /* ActivityCell.swift */,
+				AF49F7CB243890BC00880716 /* ProfileDetailsViewElements.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		AF564F7124360875000612F5 = {
 			isa = PBXGroup;
 			children = (
@@ -255,9 +274,7 @@
 			children = (
 				AF564F93243616B0000612F5 /* Color */,
 				AF564F94243616BF000612F5 /* Font */,
-				AF49F7CB243890BC00880716 /* CustomLabel.swift */,
 				AF49F8012439F69C00880716 /* CustomErrorAlert.swift */,
-				AF49F7CF2438C61600880716 /* CustomStackView.swift */,
 				AF564F8624360876000612F5 /* Assets.xcassets */,
 			);
 			path = Common;
@@ -283,9 +300,8 @@
 			isa = PBXGroup;
 			children = (
 				AF49F804243A45EB00880716 /* ViewModel */,
+				AF49F805243A540800880716 /* View */,
 				AFBE8A3A243667ED005BFA96 /* ProfilePresenter.swift */,
-				AFBE8A3C24366896005BFA96 /* ProfileViewController.swift */,
-				AFBE8A3E243669D2005BFA96 /* ProfileCell.swift */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -422,7 +438,6 @@
 				AF49F7F72439CBFE00880716 /* UIAlertController+Utils.swift in Sources */,
 				AF49F7F124391F9B00880716 /* Post.swift in Sources */,
 				AF49F7D62438FBA600880716 /* StartPresenter.swift in Sources */,
-				AF49F7D02438C61600880716 /* CustomStackView.swift in Sources */,
 				AF49F7CE2438C4A000880716 /* ActivityCell.swift in Sources */,
 				AF49F7EB24391F6D00880716 /* Address.swift in Sources */,
 				AF49F7ED24391F7C00880716 /* Company.swift in Sources */,
@@ -431,6 +446,7 @@
 				AF49F8022439F69C00880716 /* CustomErrorAlert.swift in Sources */,
 				AF49F7CA2437D89300880716 /* ProfileDetailsViewController.swift in Sources */,
 				AF564F8224360875000612F5 /* StartVC.swift in Sources */,
+				AF49F807243A556400880716 /* ProfileViewElements.swift in Sources */,
 				AF49F7EF24391F8B00880716 /* Geo.swift in Sources */,
 				AF49F7FE2439D6EF00880716 /* Cache.swift in Sources */,
 				AFBE8A3B243667ED005BFA96 /* ProfilePresenter.swift in Sources */,
@@ -443,7 +459,7 @@
 				AF49F7F92439D24500880716 /* ProfileDetailsPresenter.swift in Sources */,
 				AF49F7FB2439D26900880716 /* ProfileDetailsItemViewModel.swift in Sources */,
 				AF49F7C724379D9B00880716 /* UIView+Utils.swift in Sources */,
-				AF49F7CC243890BC00880716 /* CustomLabel.swift in Sources */,
+				AF49F7CC243890BC00880716 /* ProfileDetailsViewElements.swift in Sources */,
 				AF564F7E24360875000612F5 /* AppDelegate.swift in Sources */,
 				AF49F7F52439C3A900880716 /* ProfileItemViewModel.swift in Sources */,
 			);

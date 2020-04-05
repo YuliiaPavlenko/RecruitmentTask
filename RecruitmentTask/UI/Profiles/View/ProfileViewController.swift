@@ -12,15 +12,13 @@ import PKHUD
 class ProfileViewController: UIViewController {
     let tableView = UITableView()
     let cellId = "cellId"
-    let rowHeight: CGFloat = 64
     var profilePresenter = ProfilePresenter()
     var profilesList = [ProfileItemViewModel]()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-        customizeNavigationBar()
-        setNeedsStatusBarAppearanceUpdate()
+        
+        customizeNavigationBar(animated)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -32,34 +30,36 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         profilePresenter.viewDelegate = self
         setupTableView()
+        profilePresenter.viewIsPrepared()
+    }
+    
+    func setupTableView() {
+        view.addSubview(tableView)
+        configureConstraintsForTableView()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.separatorColor = Colors.separatorColor
         tableView.register(ProfileCell.self, forCellReuseIdentifier: cellId)
-        showProgress()
-        refreshData()
+    }
+    
+    fileprivate func configureConstraintsForTableView() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
 
-    func setupTableView() {
-      view.addSubview(tableView)
-      tableView.translatesAutoresizingMaskIntoConstraints = false
-      tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-      tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-      tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-      tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-    }
-
-    func customizeNavigationBar() {
-        self.title = "Profiles"
-        navigationItem.setHidesBackButton(true, animated: true)
+    func customizeNavigationBar(_ animated: Bool) {
+        title = "Profiles"
+        navigationItem.setHidesBackButton(true, animated: animated)
         navigationController?.navigationBar.barTintColor = Colors.green
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.white, .font: Fonts.navigationTitle!]
-    }
-
-    func refreshData() {
-        profilePresenter.getUsers()
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        setNeedsStatusBarAppearanceUpdate()
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -84,7 +84,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return rowHeight
+        return 64
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
