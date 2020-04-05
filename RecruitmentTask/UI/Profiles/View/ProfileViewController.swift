@@ -59,7 +59,6 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = Colors.green
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.white, .font: Fonts.navigationTitle!]
         navigationController?.setNavigationBarHidden(false, animated: animated)
-        setNeedsStatusBarAppearanceUpdate()
     }
 
     override var prefersStatusBarHidden: Bool {

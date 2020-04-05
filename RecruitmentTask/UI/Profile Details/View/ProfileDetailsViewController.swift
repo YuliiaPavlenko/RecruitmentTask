@@ -77,7 +77,6 @@ class ProfileDetailsViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
-        setNeedsStatusBarAppearanceUpdate()
     }
     
     private func addSubviews() {
@@ -112,10 +111,6 @@ class ProfileDetailsViewController: UIViewController {
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-    }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
     }
 
     private func customizeNavigationBar() {
