@@ -15,8 +15,9 @@ class ActivityCell: UITableViewCell {
 
     private let profileImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "applover.png")
+        imageView.image = UIImage(named: "testUserPicture.png")
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 8.0
         imageView.clipsToBounds = true
         return imageView
     }()
