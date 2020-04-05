@@ -29,7 +29,7 @@ class ProfileDetailsPresenter {
         if let user = selectedUser {
             let profileData = ProfileDetailsItemViewModel(name: user.name, email: user.email, phone: user.phone, image: userImage, address: prepareAdrressToDisplay(user.address), company: prepareCompanyAddressToDisplay(user.company), site: user.website)
             viewDelegate?.showProfileDetails(profileData)
-            
+
             viewDelegate?.showProgress()
             NetworkManager.shared.getPostsForUser(userId: user.id) { [weak self] (posts, error) in
                 guard let self = self else { return }
@@ -61,7 +61,7 @@ class ProfileDetailsPresenter {
     private func prepareCompanyAddressToDisplay(_ company: Company) -> String {
         return "\(company.name), \(company.catchPhrase), \(company.bs)"
     }
-    
+
     private func getRandomImage() -> String {
         let hardcodedImages = ["postImage.png", "postImage-1.png", "postImage-2.png"]
         let imageIndex = Int(arc4random_uniform(UInt32(hardcodedImages.count)))

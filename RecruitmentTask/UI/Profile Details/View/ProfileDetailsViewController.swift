@@ -67,7 +67,7 @@ class ProfileDetailsViewController: UIViewController {
         setConstraints()
         setupTableView()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         profileDetailsPresenter.viewIsPrepared()
@@ -78,7 +78,7 @@ class ProfileDetailsViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
     }
-    
+
     private func addSubviews() {
         view.addSubview(profileImage)
         view.addSubview(profileName)
@@ -93,18 +93,18 @@ class ProfileDetailsViewController: UIViewController {
         view.addSubview(editView)
         editView.addSubview(editImageView)
     }
-    
+
     func setupTableView() {
         view.addSubview(tableView)
         configureConstraintsForTableView()
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ActivityCell.self, forCellReuseIdentifier: cellId)
-        
+
         tableView.separatorColor = .clear
     }
-    
+
     func configureConstraintsForTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: activityLabel.bottomAnchor).isActive = true

@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         customizeNavigationBar(animated)
     }
 
@@ -32,11 +32,11 @@ class ProfileViewController: UIViewController {
         setupTableView()
         profilePresenter.viewIsPrepared()
     }
-    
+
     func setupTableView() {
         view.addSubview(tableView)
         configureConstraintsForTableView()
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.layoutMargins = UIEdgeInsets.zero
@@ -44,7 +44,7 @@ class ProfileViewController: UIViewController {
         tableView.separatorColor = Colors.separatorColor
         tableView.register(ProfileCell.self, forCellReuseIdentifier: cellId)
     }
-    
+
     fileprivate func configureConstraintsForTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true

@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileDetailsViewElements {
-    
+
     static func createProfileImage() -> UIImageView {
         let imageView = UIImageView()
         imageView.backgroundColor = Colors.separatorColor
@@ -31,7 +31,7 @@ class ProfileDetailsViewElements {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }
-    
+
     static func createPostImage() -> UIImageView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -83,7 +83,7 @@ class ProfileDetailsViewElements {
         postLabel.numberOfLines = 0
         return postLabel
     }
-    
+
     static func createVerticalStackView(arrangedSubviews: [UILabel]) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
         stackView.distribution = .equalSpacing
