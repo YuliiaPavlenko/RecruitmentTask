@@ -37,6 +37,8 @@ class StartVC: UIViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggle(_:)))
         view.addGestureRecognizer(tapGesture)
+        
+        getPosts()
     }
     
     @objc func toggle(_ sender: UITapGestureRecognizer) {
@@ -49,6 +51,13 @@ class StartVC: UIViewController {
         logoImageView.heightAnchor.constraint(equalToConstant: widthHeight).isActive = true
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80).isActive = true
+    }
+    
+    func getPosts() {
+        NetworkManager.shared.getPosts() { [weak self] (posts, error) in
+            //do something
+            print()
+        }
     }
 }
 
