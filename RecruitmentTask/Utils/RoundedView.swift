@@ -1,5 +1,5 @@
 //
-//  RoundedImageView.swift
+//  RoundedView.swift
 //  RecruitmentTask
 //
 //  Created by Yuliia Pavlenko on 04/04/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RoundedImageView: UIImageView {
+class RoundedView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         let radius: CGFloat = self.bounds.size.width / 2.0

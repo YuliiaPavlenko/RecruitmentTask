@@ -26,13 +26,19 @@ class ProfileDetailsVC: UIViewController {
         return imageView
     }()
     
-    private let editImageView: RoundedImageView = {
-        let imageView = RoundedImageView()
-        imageView.backgroundColor = Colors.green
-//        imageView.image = UIImage(named: "pencil.png")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
+    private let editView: RoundedView = {
+        let view = RoundedView()
+        view.backgroundColor = Colors.green
+        view.contentMode = .scaleAspectFill
+        return view
     }()
+    
+    private let editImageView: UIImageView = {
+            let imageView = UIImageView()
+            imageView.image = UIImage(named: "pencil.png")
+            imageView.contentMode = .scaleAspectFit
+            return imageView
+        }()
 
     private let profileName = CustomLabel.createProfileNameLabel()
     private let profileEmail = CustomLabel.createProfileDetailsLabel()
@@ -63,7 +69,8 @@ class ProfileDetailsVC: UIViewController {
         view.addSubview(siteStackView)
         
         profileImage.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: view.frame.size.height * 0.4, enableInsets: false)
-        editImageView.anchor(top: nil, left: nil, bottom: profileImage.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -33, paddingRight: 26, width: 66, height: 66, enableInsets: true)
+        editView.anchor(top: nil, left: nil, bottom: profileImage.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -33, paddingRight: 26, width: 66, height: 66, enableInsets: true)
+        editImageView.anchor(top: editView.topAnchor, left: editView.leftAnchor, bottom: nil, right: nil, paddingTop: 17, paddingLeft: 17, paddingBottom: 0, paddingRight: 0, width: 34, height: 34, enableInsets: true)
         profileInfoStackView.anchor(top: nil, left: view.leftAnchor, bottom: profileImage.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 25, paddingBottom: 16, paddingRight: 0, width: 0, height: 0, enableInsets: false)
         addressStackView.anchor(top: profileImage.bottomAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 28, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
         companyStackView.anchor(top: addressStackView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 14, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 0, enableInsets: false)
@@ -82,7 +89,8 @@ class ProfileDetailsVC: UIViewController {
         view.addSubview(siteTitleLabel)
         view.addSubview(siteLabel)
         view.addSubview(activityLabel)
-        view.addSubview(editImageView)
+        view.addSubview(editView)
+        editView.addSubview(editImageView)
         view.addSubview(tableView)
     }
   
