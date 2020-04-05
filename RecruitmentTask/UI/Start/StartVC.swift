@@ -66,6 +66,5 @@ extension StartVC: StartViewDelegate {
     func showProfileVC() {
         let vc = ProfileViewController()
         navigationController?.pushViewController(vc, animated: true)
-        //        UIView.transition(from: logoImageView, to: secondView, duration: 0.3, options: [.transitionCrossDissolve], completion: nil)
     }
 }
