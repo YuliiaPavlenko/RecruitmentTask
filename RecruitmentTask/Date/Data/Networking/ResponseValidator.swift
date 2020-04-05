@@ -16,42 +16,12 @@ func validateApiResponse(response: URLResponse?, error: Error?) -> VCError? {
         return VCError.communicationError(errorInfo: errorInfo)
     }
 
-    //TODO finish this
-//    let httpResponse = response as? HTTPURLResponse {
-//        guard let
-//    }
-//
-//    guard let httpCode =  {
-////        errorInfo.errorDescription = response.error?.localizedDescription
-//        return (nil, VCError.unknown(errorInfo: errorInfo))
-//    }
-//
-//    if 200 == httpCode {
-//        return nil
-//    }
-    
-//    errorInfo.httpCode = httpCode
-//    if let json = try? JSONSerialization.jsonObject(with: response.data!, options: []) as? [String: Any] {
-//        errorInfo.errorCode = json["errorCode"] as? String
-//        errorInfo.errorDescription = json["errorDescription"] as? String
-//        errorInfo.message = json["message"] as? String
-//    }
-//
-//    return VCError.get(errorInfo: errorInfo)
-    
-//    do {
-//        let json = try JSONDecoder().decode(T.self, from: data! )
-//
-//        print(json)
-//        return (json, nil)
-//
-//    } catch {
-//        print("Error during JSON serialization: \(error.localizedDescription)")
-//        errorInfo.message = "Error during JSON serialization: \(error.localizedDescription)"
-//
-//        return (nil, VCError.parsingResponseError(errorInfo: errorInfo))
-//    }
-    
+    if let httpResponse = response as? HTTPURLResponse {
+        if httpResponse.statusCode != 200 {
+            errorInfo.httpCode = httpResponse.statusCode
+            return VCError.get(errorInfo: errorInfo)
+        }
+    }
     
     return nil
 }
