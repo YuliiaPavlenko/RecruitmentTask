@@ -19,8 +19,8 @@ class ProfileDetailsVC: UIViewController {
     // MARK: - Create UI Elements
     private let profileImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "testUserPicture.png")
-        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = Colors.separatorColor
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -135,6 +135,7 @@ class ProfileDetailsVC: UIViewController {
     }
     
     private func setInfo() {
+        profileImage.image = UIImage(named: profileDetails.image!)
         profileName.text = profileDetails.name
         profileEmail.text = profileDetails.email
         profilePhone.text = profileDetails.phone
@@ -160,6 +161,7 @@ extension ProfileDetailsVC: UITableViewDelegate, UITableViewDataSource {
         let currentItem = postsList[indexPath.row] 
         cell.postTitle.text = currentItem.postTitle
         cell.postBody.text = currentItem.postBody
+        cell.selectionStyle = .none
         return cell
     }
     

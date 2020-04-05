@@ -21,15 +21,15 @@ class ProfileDetailsPresenter {
     
     func viewIsPrepared() {
         let selectedUser = Cache.shared.getSelectedUser()
+        let userImage = Cache.shared.getUserImage()
 
     
         if let user = selectedUser {
-            let profileData = ProfileDetailsItemViewModel(name: user.name, email: user.email, phone: user.phone, address: prepareAdrressToDisplay(user.address), company: prepareCompanyAddressToDisplay(user.company), site: user.website)
+            let profileData = ProfileDetailsItemViewModel(name: user.name, email: user.email, phone: user.phone, image: userImage, address: prepareAdrressToDisplay(user.address), company: prepareCompanyAddressToDisplay(user.company), site: user.website)
             viewDelegate?.showProfileDetails(profileData)
             
             
             NetworkManager.shared.getPostsForUser(userId: user.id) { [weak self] (posts, error) in
-                print()
                 guard let self = self else { return }
                 if let posts = posts {
                     

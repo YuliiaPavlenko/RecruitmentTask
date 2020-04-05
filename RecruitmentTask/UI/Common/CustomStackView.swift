@@ -22,7 +22,7 @@ class CustomStackView {
         let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
         stackView.distribution = .equalSpacing
         stackView.axis = .horizontal
-        stackView.spacing = 5
+        stackView.spacing = 10
         return stackView
     }
 }

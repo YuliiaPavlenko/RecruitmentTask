@@ -11,6 +11,7 @@ import Foundation
 class Cache {
     static let shared = Cache()
     private var selectedUser: User?
+    private var userImage: String?
 
     func setSelectedUser(_ user: User) {
         selectedUser = user
@@ -18,5 +19,13 @@ class Cache {
     
     func getSelectedUser() -> User? {
         return selectedUser
+    }
+    
+    func setUserImage(_ image: String) {
+        userImage = image
+    }
+    
+    func getUserImage() -> String? {
+        return userImage
     }
 }

@@ -24,7 +24,7 @@ class ProfilePresenter {
 
     func profileClicked(_ atIndex: Int) {
         Cache.shared.setSelectedUser(originalUsers[atIndex])
-        
+        Cache.shared.setUserImage(usersList[atIndex].image!)
         viewDelegate?.showProfileDetails()
     }
     
@@ -37,13 +37,22 @@ class ProfilePresenter {
                 self.originalUsers = users
                 
                 for user in users {
-                    let user = ProfileItemViewModel(name: user.name, email: user.email, phone: user.phone)
+                    let user = ProfileItemViewModel(name: user.name, email: user.email, phone: user.phone, image: self.getRandomImage())
                     self.usersList.append(user)
+                    Cache.shared.setUserImage(self.getRandomImage())
                 }
                 self.viewDelegate?.showUsersData(self.usersList)
             } else {
                 self.viewDelegate?.showDownloadUsersDataError(withMessage: error?.debugDescription)
             }
         }
+    }
+    
+    private func getRandomImage() -> String {
+        let hardcodedImages = ["Userpic.png", "Userpic-1.png", "Userpic-2.png"]
+        let imageIndex = Int(arc4random_uniform(UInt32(hardcodedImages.count)))
+        let selectedImage = hardcodedImages[imageIndex]
+//        Cache.shared.setUserImage(selectedImage)
+        return selectedImage
     }
 }

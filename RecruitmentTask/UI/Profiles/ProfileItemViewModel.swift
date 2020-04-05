@@ -10,11 +10,12 @@ struct ProfileItemViewModel {
     var name: String?
     var email: String?
     var phone: String?
-//    var image: String?
+    var image: String?
 
-    init(name: String?, email: String?, phone: String?) {
+    init(name: String?, email: String?, phone: String?, image: String?) {
         self.name = name
         self.email = email
         self.phone = phone
+        self.image = image
     }
 }

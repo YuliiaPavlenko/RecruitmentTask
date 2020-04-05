@@ -73,6 +73,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         cell.userNameLabel.text = currentItem.name
         cell.userEmailLabel.text = currentItem.email
         cell.userPhoneLabel.text = currentItem.phone
+        cell.profileImage.image = UIImage(named: currentItem.image!)
         return cell
     }
     

@@ -36,8 +36,6 @@ class NetworkManager {
             
             do {
                 let json = try JSONDecoder().decode([Post].self, from: data!)
-                
-                print(json)
                 completion(json, nil)
                 
             } catch {
@@ -64,7 +62,6 @@ class NetworkManager {
                 do {
                     let json = try JSONDecoder().decode([User].self, from: data! )
                     
-                    print(json)
                     completion(json, nil)
                     
                 } catch {
@@ -92,7 +89,6 @@ class NetworkManager {
             do {
                 let json = try JSONDecoder().decode([Post].self, from: data! )
                 
-                print(json)
                 completion(json, nil)
                 
             } catch {
