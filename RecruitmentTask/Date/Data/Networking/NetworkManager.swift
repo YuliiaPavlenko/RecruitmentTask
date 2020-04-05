@@ -21,8 +21,8 @@ class NetworkManager {
         let url = URL(string: Router.users)!
         let task = session.dataTask(with: url, completionHandler: { data, response, error in
 
-            if let err = validateApiResponse(response: response, error: error) {
-                completion(nil, err)
+            if let error = validateApiResponse(response: response, error: error) {
+                completion(nil, error)
                 return
             }
 
@@ -45,8 +45,8 @@ class NetworkManager {
         let url = URL(string: Router.postsForUser(userId))!
         let task = session.dataTask(with: url, completionHandler: { data, response, error in
 
-            if let err = validateApiResponse(response: response, error: error) {
-                completion(nil, err)
+            if let error = validateApiResponse(response: response, error: error) {
+                completion(nil, error)
                 return
             }
 
