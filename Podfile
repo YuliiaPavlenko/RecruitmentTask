@@ -4,7 +4,7 @@ inhibit_all_warnings!
 
 def all_pods
   pod 'SwiftLint'
-  pod 'PureLayout'
+  pod 'PKHUD', '~> 5.0'
 end
 
 
