@@ -10,4 +10,5 @@ import Foundation
 
 class Router {
     static let posts = Config.baseURL + "/posts"
+    static let users = Config.baseURL + "/users"
 }

@@ -28,6 +28,8 @@
 		AF49F7EF24391F8B00880716 /* Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7EE24391F8B00880716 /* Geo.swift */; };
 		AF49F7F124391F9B00880716 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7F024391F9B00880716 /* Post.swift */; };
 		AF49F7F324391FA900880716 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7F224391FA900880716 /* User.swift */; };
+		AF49F7F52439C3A900880716 /* ProfileItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7F42439C3A900880716 /* ProfileItemViewModel.swift */; };
+		AF49F7F72439CBFE00880716 /* UIAlertController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7F62439CBFE00880716 /* UIAlertController+Utils.swift */; };
 		AF564F7E24360875000612F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F7D24360875000612F5 /* AppDelegate.swift */; };
 		AF564F8224360875000612F5 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F8124360875000612F5 /* StartVC.swift */; };
 		AF564F8724360876000612F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF564F8624360876000612F5 /* Assets.xcassets */; };
@@ -62,6 +64,8 @@
 		AF49F7EE24391F8B00880716 /* Geo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geo.swift; sourceTree = "<group>"; };
 		AF49F7F024391F9B00880716 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		AF49F7F224391FA900880716 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AF49F7F42439C3A900880716 /* ProfileItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemViewModel.swift; sourceTree = "<group>"; };
+		AF49F7F62439CBFE00880716 /* UIAlertController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Utils.swift"; sourceTree = "<group>"; };
 		AF564F7A24360875000612F5 /* RecruitmentTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecruitmentTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF564F7D24360875000612F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF564F8124360875000612F5 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				AF49F7C624379D9B00880716 /* UIView+Utils.swift */,
+				AF49F7F62439CBFE00880716 /* UIAlertController+Utils.swift */,
 				AF49F7D82439012D00880716 /* UIImageView+Utils.swift */,
 			);
 			path = Utils;
@@ -242,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				AFBE8A3A243667ED005BFA96 /* ProfilePresenter.swift */,
+				AF49F7F42439C3A900880716 /* ProfileItemViewModel.swift */,
 				AFBE8A3C24366896005BFA96 /* ProfileViewController.swift */,
 				AFBE8A3E243669D2005BFA96 /* ProfileCell.swift */,
 			);
@@ -377,6 +383,7 @@
 				AF49F7E024391E6000880716 /* ErrorInfo.swift in Sources */,
 				AF49F7DE24391E4800880716 /* ResponseValidator.swift in Sources */,
 				AF49F7F324391FA900880716 /* User.swift in Sources */,
+				AF49F7F72439CBFE00880716 /* UIAlertController+Utils.swift in Sources */,
 				AF49F7F124391F9B00880716 /* Post.swift in Sources */,
 				AF49F7D62438FBA600880716 /* StartPresenter.swift in Sources */,
 				AF49F7D02438C61600880716 /* CustomStackView.swift in Sources */,
@@ -398,6 +405,7 @@
 				AF49F7C724379D9B00880716 /* UIView+Utils.swift in Sources */,
 				AF49F7CC243890BC00880716 /* CustomLabel.swift in Sources */,
 				AF564F7E24360875000612F5 /* AppDelegate.swift in Sources */,
+				AF49F7F52439C3A900880716 /* ProfileItemViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

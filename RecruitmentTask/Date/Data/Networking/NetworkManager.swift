@@ -11,7 +11,6 @@ import Foundation
 class NetworkManager {
     
     static let shared = NetworkManager()
-    
     let session:URLSession
     
     private init() {
@@ -26,16 +25,17 @@ class NetworkManager {
             
             if let err = validateApiResponse(response: response, error: error){
                 completion(nil, err)
+                return
             }
             
 //        // Check if an error occured
 //        if error != nil {
-////            completion(nil, VCError.)
+//            completion(nil, VCError.)
 //            return
 //        }
             
             do {
-                let json = try JSONDecoder().decode([Post].self, from: data! )
+                let json = try JSONDecoder().decode([Post].self, from: data!)
                 
                 print(json)
                 completion(json, nil)
@@ -59,6 +59,41 @@ class NetworkManager {
         })
         task.resume()
     }
+    
+    func getUsers(completion: @escaping (([User]?, VCError?) -> Void)) {
+            let url = URL(string: Router.users)!
+            let task = session.dataTask(with: url, completionHandler: { data, response, error in
+                
+                if let err = validateApiResponse(response: response, error: error){
+                    completion(nil, err)
+                    return
+                }
+                
+                do {
+                    let json = try JSONDecoder().decode([User].self, from: data! )
+                    
+                    print(json)
+                    completion(json, nil)
+                    
+                } catch {
+                    print("Error during JSON serialization: \(error.localizedDescription)")
+                    var errorInfo = ErrorInfo()
+                    errorInfo.message = "Error during JSON serialization: \(error.localizedDescription)"
+                     
+                    completion (nil, VCError.parsingResponseError(errorInfo: errorInfo))
+                }
+            
+    //        // Serialize the data into an object
+    //        do {
+    //            let json = try JSONDecoder().decode([Post].self, from: data! )
+    //                //try JSONSerialization.jsonObject(with: data!, options: [])
+    //            print(json)
+    //        } catch {
+    //            print("Error during JSON serialization: \(error.localizedDescription)")
+    //        }
+            })
+            task.resume()
+        }
     
     
 }

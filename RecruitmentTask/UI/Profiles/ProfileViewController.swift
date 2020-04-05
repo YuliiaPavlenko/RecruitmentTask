@@ -13,11 +13,13 @@ class ProfileViewController: UIViewController {
     let cellId = "cellId"
     let rowHeight: CGFloat = 64
     var profilePresenter = ProfilePresenter()
+    var profilesList = [ProfileItemViewModel]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
         customizeNavigationBar()
+        refreshData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,20 +54,25 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = Colors.green
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.white, .font: Fonts.navigationTitle!]
     }
+    
+    func refreshData() {
+        profilePresenter.getUsers()
+    }
 }
 
 
 // MARK: - UITableView Delegate & DataSource
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return profilesList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProfileCell
-        cell.userNameLabel.text = "Test Name"
-        cell.userEmailLabel.text = "Test Email"
-        cell.userPhoneLabel.text = "1234567890"
+        let currentItem = profilesList[indexPath.row]
+        cell.userNameLabel.text = currentItem.name
+        cell.userEmailLabel.text = currentItem.email
+        cell.userPhoneLabel.text = currentItem.phone
         return cell
     }
     
@@ -82,8 +89,22 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: ProfileViewDelegate
 extension ProfileViewController: ProfileViewDelegate {
+    func showUsersData(_ data: [ProfileItemViewModel]) {
+        profilesList = data
+        tableView.reloadData()
+    }
+    
     func showProfileDetails() {
         let detailsVC = ProfileDetailsVC()
+        
         navigationController?.pushViewController(detailsVC, animated: true)
+    }
+    
+    func showDownloadUsersDataError(withMessage: String?) {
+        let message = "Error getting data from API." + " \(String(describing: withMessage!))"
+        let alert = UIAlertController.errorAlert(withMessage: message)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_: UIAlertAction!) in
+        }))
+        present(alert, animated: true)
     }
 }
