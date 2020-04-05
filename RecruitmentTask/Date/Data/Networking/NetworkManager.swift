@@ -17,38 +17,6 @@ class NetworkManager {
         session = URLSession(configuration: .default)
     }
 
-    func getPosts(completion: @escaping (([Post]?, RTError?) -> Void)) {
-        let url = URL(string: Router.posts)!
-
-        let task = session.dataTask(with: url, completionHandler: { data, response, error in
-
-            if let err = validateApiResponse(response: response, error: error) {
-                completion(nil, err)
-                return
-            }
-
-            //        // Check if an error occured
-            //        if error != nil {
-            //            completion(nil, RTError.)
-            //            return
-            //        }
-
-            do {
-                let json = try JSONDecoder().decode([Post].self, from: data!)
-                completion(json, nil)
-
-            } catch {
-                print("Error during JSON serialization: \(error.localizedDescription)")
-                var errorInfo = ErrorInfo()
-                errorInfo.message = "Error during JSON serialization: \(error.localizedDescription)"
-
-                completion(nil, RTError.parsingResponseError(errorInfo: errorInfo))
-            }
-
-        })
-        task.resume()
-    }
-
     func getUsers(completion: @escaping (([User]?, RTError?) -> Void)) {
         let url = URL(string: Router.users)!
         let task = session.dataTask(with: url, completionHandler: { data, response, error in
@@ -62,9 +30,7 @@ class NetworkManager {
                 let json = try JSONDecoder().decode([User].self, from: data! )
 
                 completion(json, nil)
-
             } catch {
-                print("Error during JSON serialization: \(error.localizedDescription)")
                 var errorInfo = ErrorInfo()
                 errorInfo.message = "Error during JSON serialization: \(error.localizedDescription)"
 

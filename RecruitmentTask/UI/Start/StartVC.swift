@@ -27,19 +27,28 @@ class StartVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         startPresenter.viewDelegate = self
+        
+        setupView()
+        setupGestureRecognizer()
+    }
+    
+    fileprivate func setupGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    fileprivate func setupView() {
         view.backgroundColor = .white
         view.addSubview(logoImageView)
         setImageViewConstraints()
-
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggle(_:)))
-        view.addGestureRecognizer(tapGesture)
     }
 
-    @objc func toggle(_ sender: UITapGestureRecognizer) {
+    @objc func viewTapped(_ sender: UITapGestureRecognizer) {
         startPresenter.screenClicked()
     }
 
@@ -56,7 +65,7 @@ class StartVC: UIViewController {
 extension StartVC: StartViewDelegate {
     func showProfileVC() {
         let vc = ProfileViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
         //        UIView.transition(from: logoImageView, to: secondView, duration: 0.3, options: [.transitionCrossDissolve], completion: nil)
     }
 }

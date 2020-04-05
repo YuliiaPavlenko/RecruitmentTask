@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		807A3C7C52BC9FFAE392AE04 /* Pods_RecruitmentTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D92ED7CD3B9180DEC33E66 /* Pods_RecruitmentTask.framework */; };
 		AF49F7C724379D9B00880716 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7C624379D9B00880716 /* UIView+Utils.swift */; };
-		AF49F7CA2437D89300880716 /* ProfileDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7C92437D89300880716 /* ProfileDetailsVC.swift */; };
+		AF49F7CA2437D89300880716 /* ProfileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7C92437D89300880716 /* ProfileDetailsViewController.swift */; };
 		AF49F7CC243890BC00880716 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7CB243890BC00880716 /* CustomLabel.swift */; };
 		AF49F7CE2438C4A000880716 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7CD2438C4A000880716 /* ActivityCell.swift */; };
 		AF49F7D02438C61600880716 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7CF2438C61600880716 /* CustomStackView.swift */; };
@@ -49,7 +49,7 @@
 		09031B1A8038144B2CA9094C /* Pods-RecruitmentTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecruitmentTask.debug.xcconfig"; path = "Target Support Files/Pods-RecruitmentTask/Pods-RecruitmentTask.debug.xcconfig"; sourceTree = "<group>"; };
 		28D92ED7CD3B9180DEC33E66 /* Pods_RecruitmentTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecruitmentTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF49F7C624379D9B00880716 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
-		AF49F7C92437D89300880716 /* ProfileDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsVC.swift; sourceTree = "<group>"; };
+		AF49F7C92437D89300880716 /* ProfileDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsViewController.swift; sourceTree = "<group>"; };
 		AF49F7CB243890BC00880716 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		AF49F7CD2438C4A000880716 /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		AF49F7CF2438C61600880716 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
@@ -130,10 +130,9 @@
 		AF49F7C82437D87C00880716 /* Profile Details */ = {
 			isa = PBXGroup;
 			children = (
-				AF49F7C92437D89300880716 /* ProfileDetailsVC.swift */,
+				AF49F803243A45B500880716 /* ViewModel */,
+				AF49F7C92437D89300880716 /* ProfileDetailsViewController.swift */,
 				AF49F7F82439D24500880716 /* ProfileDetailsPresenter.swift */,
-				AF49F7FA2439D26900880716 /* ProfileDetailsItemViewModel.swift */,
-				AF49F7FF2439F04000880716 /* PostViewModel.swift */,
 				AF49F7CD2438C4A000880716 /* ActivityCell.swift */,
 			);
 			path = "Profile Details";
@@ -190,6 +189,23 @@
 				AF49F7FD2439D6EF00880716 /* Cache.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		AF49F803243A45B500880716 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AF49F7FA2439D26900880716 /* ProfileDetailsItemViewModel.swift */,
+				AF49F7FF2439F04000880716 /* PostViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AF49F804243A45EB00880716 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AF49F7F42439C3A900880716 /* ProfileItemViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AF564F7124360875000612F5 = {
@@ -266,8 +282,8 @@
 		AFBE8A372436667A005BFA96 /* Profiles */ = {
 			isa = PBXGroup;
 			children = (
+				AF49F804243A45EB00880716 /* ViewModel */,
 				AFBE8A3A243667ED005BFA96 /* ProfilePresenter.swift */,
-				AF49F7F42439C3A900880716 /* ProfileItemViewModel.swift */,
 				AFBE8A3C24366896005BFA96 /* ProfileViewController.swift */,
 				AFBE8A3E243669D2005BFA96 /* ProfileCell.swift */,
 			);
@@ -413,7 +429,7 @@
 				AF564F9824362DE2000612F5 /* Fonts.swift in Sources */,
 				AF49F7D92439012D00880716 /* RoundedView.swift in Sources */,
 				AF49F8022439F69C00880716 /* CustomErrorAlert.swift in Sources */,
-				AF49F7CA2437D89300880716 /* ProfileDetailsVC.swift in Sources */,
+				AF49F7CA2437D89300880716 /* ProfileDetailsViewController.swift in Sources */,
 				AF564F8224360875000612F5 /* StartVC.swift in Sources */,
 				AF49F7EF24391F8B00880716 /* Geo.swift in Sources */,
 				AF49F7FE2439D6EF00880716 /* Cache.swift in Sources */,

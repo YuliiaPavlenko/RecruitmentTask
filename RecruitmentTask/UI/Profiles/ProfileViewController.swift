@@ -104,7 +104,7 @@ extension ProfileViewController: ProfileViewDelegate {
     }
 
     func showProfileDetails() {
-        let detailsVC = ProfileDetailsVC()
+        let detailsVC = ProfileDetailsViewController()
         navigationController?.pushViewController(detailsVC, animated: true)
     }
 

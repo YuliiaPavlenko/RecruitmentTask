@@ -6,8 +6,6 @@
 //  Copyright © 2020 Yuliia Pavlenko. All rights reserved.
 //
 
-import UIKit
-
 protocol StartViewDelegate: class {
     func showProfileVC()
 }

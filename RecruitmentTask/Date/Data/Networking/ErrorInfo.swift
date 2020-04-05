@@ -10,7 +10,6 @@ import Foundation
 
 struct ErrorInfo {
     var httpCode: Int?
-    var errorCode: String?
     var errorDescription: String?
     var message: String?
 

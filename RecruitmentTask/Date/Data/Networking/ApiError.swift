@@ -47,7 +47,7 @@ enum RTError: Error {
              .serverError(let errorInfo),
              .unknown(let errorInfo),
              .communicationError(let errorInfo),
-        .parsingResponseError(let errorInfo):
+             .parsingResponseError(let errorInfo):
 
             return "ErrorInfo: \(String(describing: errorInfo?.debugInfo))"
         }

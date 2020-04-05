@@ -1,5 +1,5 @@
 //
-//  ProfileDetailsVC.swift
+//  ProfileDetailsViewController.swift
 //  RecruitmentTask
 //
 //  Created by Yuliia Pavlenko on 03/04/2020.
@@ -9,7 +9,7 @@
 import UIKit
 import PKHUD
 
-class ProfileDetailsVC: UIViewController {
+class ProfileDetailsViewController: UIViewController {
     let tableView = UITableView()
     let cellId = "cellId"
     let rowHeight: CGFloat = 90
@@ -155,7 +155,7 @@ class ProfileDetailsVC: UIViewController {
 }
 
 // MARK: - UITableView Delegate & DataSource
-extension ProfileDetailsVC: UITableViewDelegate, UITableViewDataSource {
+extension ProfileDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return postsList.count
     }
@@ -176,7 +176,7 @@ extension ProfileDetailsVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: ProfileDetailsViewDelegate
-extension ProfileDetailsVC: ProfileDetailsViewDelegate {
+extension ProfileDetailsViewController: ProfileDetailsViewDelegate {
     func showProfileDetails(_ data: ProfileDetailsItemViewModel) {
         profileDetails = data
         setInfo()

@@ -10,8 +10,12 @@ import Foundation
 
 class Cache {
     static let shared = Cache()
+    
     private var selectedUser: User?
     private var userImage: String?
+    
+    private init() {
+    }
 
     func setSelectedUser(_ user: User) {
         selectedUser = user
