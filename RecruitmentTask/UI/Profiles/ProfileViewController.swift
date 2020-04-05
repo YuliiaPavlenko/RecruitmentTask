@@ -15,18 +15,19 @@ class ProfileViewController: UIViewController {
     let rowHeight: CGFloat = 64
     var profilePresenter = ProfilePresenter()
     var profilesList = [ProfileItemViewModel]()
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
         customizeNavigationBar()
+        setNeedsStatusBarAppearanceUpdate()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         profilePresenter.viewDelegate = self
@@ -40,7 +41,7 @@ class ProfileViewController: UIViewController {
         showProgress()
         refreshData()
     }
-    
+
     func setupTableView() {
       view.addSubview(tableView)
       tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,26 +50,29 @@ class ProfileViewController: UIViewController {
       tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
       tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
-    
+
     func customizeNavigationBar() {
         self.title = "Profiles"
         navigationItem.setHidesBackButton(true, animated: true)
         navigationController?.navigationBar.barTintColor = Colors.green
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.white, .font: Fonts.navigationTitle!]
     }
-    
+
     func refreshData() {
         profilePresenter.getUsers()
     }
-}
 
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
+}
 
 // MARK: - UITableView Delegate & DataSource
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return profilesList.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProfileCell
         let currentItem = profilesList[indexPath.row]
@@ -78,16 +82,16 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         cell.profileImage.image = UIImage(named: currentItem.image!)
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return rowHeight
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         profilePresenter.profileClicked(indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
 }
 
 // MARK: ProfileViewDelegate
@@ -98,17 +102,17 @@ extension ProfileViewController: ProfileViewDelegate {
             self.tableView.reloadData()
         }
     }
-    
+
     func showProfileDetails() {
         let detailsVC = ProfileDetailsVC()
         navigationController?.pushViewController(detailsVC, animated: true)
     }
-    
+
     func showDownloadUsersDataError(withMessage: String?) {
         let alert = CustomErrorAlert.setUpErrorAlert(withMessage)
         present(alert, animated: true)
     }
-    
+
     func showProgress() {
         HUD.show(.progress)
     }

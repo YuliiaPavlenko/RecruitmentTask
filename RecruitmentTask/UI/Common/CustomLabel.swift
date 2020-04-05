@@ -9,7 +9,7 @@
 import UIKit
 
 class CustomLabel {
-    
+
     static func createTitleLabel() -> UILabel {
         let titleLabel = UILabel()
         titleLabel.textColor = .black
@@ -17,7 +17,7 @@ class CustomLabel {
         titleLabel.textAlignment = .left
         return titleLabel
     }
-    
+
     static func createAddressLabel() -> UILabel {
         let addressLabel = UILabel()
         addressLabel.textColor = Colors.bodyText
@@ -26,7 +26,7 @@ class CustomLabel {
         addressLabel.numberOfLines = 0
         return addressLabel
     }
-    
+
     static func createPostLabel() -> UILabel {
         let postLabel = UILabel()
         postLabel.textColor = Colors.bodyText
@@ -35,7 +35,7 @@ class CustomLabel {
         postLabel.numberOfLines = 0
         return postLabel
     }
-    
+
     static func createProfileNameLabel() -> UILabel {
         let postLabel = UILabel()
         postLabel.textColor = .white
@@ -44,7 +44,7 @@ class CustomLabel {
         postLabel.numberOfLines = 0
         return postLabel
     }
-    
+
     static func createProfileDetailsLabel() -> UILabel {
         let postLabel = UILabel()
         postLabel.textColor = .white

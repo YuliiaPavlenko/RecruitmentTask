@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum VCError: Error {
+enum RTError: Error {
     case unauthorised(errorInfo: ErrorInfo?)
     case forbidden(errorInfo: ErrorInfo?)
     case badRequest(errorInfo: ErrorInfo?)
@@ -17,7 +17,7 @@ enum VCError: Error {
     case communicationError(errorInfo: ErrorInfo?)
     case parsingResponseError(errorInfo: ErrorInfo?)
 
-    static func get(errorInfo: ErrorInfo?) -> VCError {
+    static func get(errorInfo: ErrorInfo?) -> RTError {
         guard let code = errorInfo?.httpCode else {
             return unknown(errorInfo: errorInfo)
         }
@@ -48,7 +48,7 @@ enum VCError: Error {
              .unknown(let errorInfo),
              .communicationError(let errorInfo),
         .parsingResponseError(let errorInfo):
-            
+
             return "ErrorInfo: \(String(describing: errorInfo?.debugInfo))"
         }
     }

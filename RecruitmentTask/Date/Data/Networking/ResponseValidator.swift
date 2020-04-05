@@ -8,20 +8,20 @@
 
 import Foundation
 
-func validateApiResponse(response: URLResponse?, error: Error?) -> VCError? {
+func validateApiResponse(response: URLResponse?, error: Error?) -> RTError? {
     var errorInfo = ErrorInfo()
-    
+
     if let er = error {
         errorInfo.message = er.localizedDescription
-        return VCError.communicationError(errorInfo: errorInfo)
+        return RTError.communicationError(errorInfo: errorInfo)
     }
 
     if let httpResponse = response as? HTTPURLResponse {
         if httpResponse.statusCode != 200 {
             errorInfo.httpCode = httpResponse.statusCode
-            return VCError.get(errorInfo: errorInfo)
+            return RTError.get(errorInfo: errorInfo)
         }
     }
-    
+
     return nil
 }

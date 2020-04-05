@@ -9,7 +9,7 @@
 import UIKit
 
 class StartVC: UIViewController {
-    
+
     var startPresenter = StartPresenter()
 
     let logoImageView: UIImageView = {
@@ -18,31 +18,31 @@ class StartVC: UIViewController {
        imageView.translatesAutoresizingMaskIntoConstraints = false
        return imageView
     }()
-    
+
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         startPresenter.viewDelegate = self
         view.backgroundColor = .white
         view.addSubview(logoImageView)
         setImageViewConstraints()
-        
+
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggle(_:)))
-        view.addGestureRecognizer(tapGesture)        
+        view.addGestureRecognizer(tapGesture)
     }
-    
+
     @objc func toggle(_ sender: UITapGestureRecognizer) {
         startPresenter.screenClicked()
     }
-    
+
     func setImageViewConstraints() {
         let widthHeight: CGFloat = 156.81
         logoImageView.widthAnchor.constraint(equalToConstant: widthHeight).isActive = true

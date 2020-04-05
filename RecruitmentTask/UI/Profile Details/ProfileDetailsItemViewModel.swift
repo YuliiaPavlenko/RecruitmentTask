@@ -27,6 +27,6 @@ struct ProfileDetailsItemViewModel {
         self.company = company
         self.website = site
     }
-    
+
     init() {}
 }

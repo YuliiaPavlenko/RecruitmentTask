@@ -9,7 +9,7 @@
 import UIKit
 
 class CustomStackView {
-    
+
     static func createVerticalStackView(arrangedSubviews: [UILabel]) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
         stackView.distribution = .equalSpacing

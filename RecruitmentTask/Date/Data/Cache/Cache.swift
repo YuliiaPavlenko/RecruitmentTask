@@ -16,15 +16,15 @@ class Cache {
     func setSelectedUser(_ user: User) {
         selectedUser = user
     }
-    
+
     func getSelectedUser() -> User? {
         return selectedUser
     }
-    
+
     func setUserImage(_ image: String) {
         userImage = image
     }
-    
+
     func getUserImage() -> String? {
         return userImage
     }
