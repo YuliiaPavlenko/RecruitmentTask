@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController {
     let tableView = UITableView()
     let cellId = "cellId"
     var profilePresenter = ProfilePresenter()
-    var profilesList = [ProfileItemViewModel]()
+    var profilesList = [ProfileModel]()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -95,7 +95,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: ProfileViewDelegate
 extension ProfileViewController: ProfileViewDelegate {
-    func showUsersData(_ data: [ProfileItemViewModel]) {
+    func showUsersData(_ data: [ProfileModel]) {
         profilesList = data
         DispatchQueue.main.async {
             self.tableView.reloadData()

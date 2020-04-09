@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ProfileDetailsItemViewModel {
+struct ProfileDetailsModel {
     var name: String?
     var email: String?
     var phone: String?

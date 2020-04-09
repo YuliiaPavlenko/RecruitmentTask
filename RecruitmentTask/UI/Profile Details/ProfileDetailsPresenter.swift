@@ -9,17 +9,17 @@
 import UIKit
 
 protocol ProfileDetailsViewDelegate: class {
-    func showProfileDetails(_ data: ProfileDetailsItemViewModel)
+    func showProfileDetails(_ data: ProfileDetailsModel)
     func showProfileDetailsError()
-    func showPosts(_ data: [PostViewModel])
+    func showPosts(_ data: [PostModel])
     func showDownloadPostsDataError(withMessage: DisplayErrorModel)
     func showProgress()
     func hideProgress()
 }
 
 class ProfileDetailsPresenter {
-    var profileDetails = [ProfileDetailsItemViewModel]()
-    var postsList = [PostViewModel]()
+    var profileDetails = [ProfileDetailsModel]()
+    var postsList = [PostModel]()
     weak var viewDelegate: ProfileDetailsViewDelegate?
 
     func viewIsPrepared() {
@@ -27,7 +27,7 @@ class ProfileDetailsPresenter {
         let userImage = Cache.shared.getUserImage()
 
         if let user = selectedUser {
-            let profileData = ProfileDetailsItemViewModel(name: user.name, email: user.email, phone: user.phone, image: userImage, address: prepareAdrressToDisplay(user.address), company: prepareCompanyAddressToDisplay(user.company), site: user.website)
+            let profileData = ProfileDetailsModel(name: user.name, email: user.email, phone: user.phone, image: userImage, address: prepareAdrressToDisplay(user.address), company: prepareCompanyAddressToDisplay(user.company), site: user.website)
             viewDelegate?.showProfileDetails(profileData)
             
             viewDelegate?.showProgress()
@@ -38,7 +38,7 @@ class ProfileDetailsPresenter {
                 if let posts = posts {
 
                     for post in posts {
-                        let post = PostViewModel(postTitle: post.title, postBody: post.body, postImage: self.getRandomImage())
+                        let post = PostModel(postTitle: post.title, postBody: post.body, postImage: self.getRandomImage())
                         self.postsList.append(post)
                     }
                     self.viewDelegate?.showPosts(self.postsList)

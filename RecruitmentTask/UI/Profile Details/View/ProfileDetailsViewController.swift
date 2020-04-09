@@ -13,8 +13,8 @@ class ProfileDetailsViewController: UIViewController {
     let tableView = UITableView()
     let cellId = "cellId"
     var profileDetailsPresenter = ProfileDetailsPresenter()
-    var profileDetails = ProfileDetailsItemViewModel()
-    var postsList = [PostViewModel]()
+    var profileDetails = ProfileDetailsModel()
+    var postsList = [PostModel]()
 
     // MARK: - Create UI Elements
     private let profileImage = ProfileDetailsViewElements.createProfileImage()
@@ -159,12 +159,12 @@ extension ProfileDetailsViewController: UITableViewDelegate, UITableViewDataSour
 
 // MARK: ProfileDetailsViewDelegate
 extension ProfileDetailsViewController: ProfileDetailsViewDelegate {
-    func showProfileDetails(_ data: ProfileDetailsItemViewModel) {
+    func showProfileDetails(_ data: ProfileDetailsModel) {
         profileDetails = data
         setProfileInformation()
     }
 
-    func showPosts(_ data: [PostViewModel]) {
+    func showPosts(_ data: [PostModel]) {
         postsList = data
         DispatchQueue.main.async {
             self.tableView.reloadData()

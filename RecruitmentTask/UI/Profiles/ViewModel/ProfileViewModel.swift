@@ -1,5 +1,5 @@
 //
-//  PostViewModel.swift
+//  ProfileViewModel.swift
 //  RecruitmentTask
 //
 //  Created by Yuliia Pavlenko on 08/04/2020.

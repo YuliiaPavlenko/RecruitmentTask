@@ -10,14 +10,14 @@ import UIKit
 
 protocol ProfileViewDelegate: class {
     func showProfileDetails()
-    func showUsersData(_ data: [ProfileItemViewModel])
+    func showUsersData(_ data: [ProfileModel])
     func showDownloadUsersDataError(withMessage: DisplayErrorModel)
     func showProgress()
     func hideProgress()
 }
 
 class ProfilePresenter {
-    var usersList = [ProfileItemViewModel]()
+    var usersList = [ProfileModel]()
 
     var originalUsers = [User]()
 
@@ -41,7 +41,7 @@ class ProfilePresenter {
                 self.originalUsers = users
 
                 for user in users {
-                    let user = ProfileItemViewModel(name: user.name, email: user.email, phone: user.phone, image: self.getRandomImage())
+                    let user = ProfileModel(name: user.name, email: user.email, phone: user.phone, image: self.getRandomImage())
                     self.usersList.append(user)
                     Cache.shared.setUserImage(self.getRandomImage())
                 }
