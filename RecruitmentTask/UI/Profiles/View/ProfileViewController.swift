@@ -13,7 +13,6 @@ import RxSwift
 
 class ProfileViewController: UIViewController {
     let tableView = UITableView()
-//    let cellId = "cellId"
     var profilePresenter = ProfilePresenter()
     var profileViewModel = [ProfileModel]()
     private let disposeBag = DisposeBag()
@@ -37,15 +36,14 @@ class ProfileViewController: UIViewController {
         setupTableView()
         profilePresenter.viewIsPrepared()
         setupUsersObserver()
-//        setupCellConfiguration()
+        setupCellConfiguration()
+        setupCellTapHandling()
     }
     
     func setupTableView() {
         view.addSubview(tableView)
         configureConstraintsForTableView()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
+
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.separatorColor = Colors.separatorColor
@@ -71,34 +69,6 @@ class ProfileViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return false
     }
-}
-
-// MARK: - UITableView Delegate & DataSource
-extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profilePresenter.usersList.value.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.Identifier, for: indexPath) as? ProfileCell else {
-          //Something went wrong with the identifier.
-          return UITableViewCell()
-        }
-        
-        let user = profilePresenter.usersList.value[indexPath.row]
-        cell.configureWithUser(user: user)
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 64
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        profilePresenter.profileClicked(indexPath.row)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-
 }
 
 // MARK: ProfileViewDelegate
@@ -149,10 +119,24 @@ private extension ProfileViewController {
         .bind(to: tableView
           .rx //2
           .items(cellIdentifier: ProfileCell.Identifier,
-                 cellType: ProfileCell.self.self)) { //3
+                 cellType: ProfileCell.self)) { //3
                   row, user, cell in
                   cell.configureWithUser(user: user) //4
         }
         .disposed(by: disposeBag) //5
     }
+    
+    func setupCellTapHandling() {
+      tableView
+        .rx
+        .modelSelected(ProfileModel.self)
+        .subscribe(onNext: { [unowned self] user in
+          if let selectedRowIndexPath = self.tableView.indexPathForSelectedRow {
+            self.profilePresenter.profileClicked(selectedRowIndexPath.row)
+            self.tableView.deselectRow(at: selectedRowIndexPath, animated: true)
+          }
+        })
+        .disposed(by: disposeBag)
+    }
+    
 }
