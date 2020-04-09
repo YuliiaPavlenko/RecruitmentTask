@@ -38,6 +38,7 @@
 		AF49F819243E0CA500880716 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F818243E0CA500880716 /* ProfileViewModel.swift */; };
 		AF49F81B243E0CBF00880716 /* ProfileDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F81A243E0CBF00880716 /* ProfileDetailsViewModel.swift */; };
 		AF49F81D243E0CD100880716 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F81C243E0CD100880716 /* PostViewModel.swift */; };
+		AF49F825243F262100880716 /* RecruitmentTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F824243F262100880716 /* RecruitmentTaskTests.swift */; };
 		AF564F7E24360875000612F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F7D24360875000612F5 /* AppDelegate.swift */; };
 		AF564F8224360875000612F5 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF564F8124360875000612F5 /* StartVC.swift */; };
 		AF564F8724360876000612F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF564F8624360876000612F5 /* Assets.xcassets */; };
@@ -47,6 +48,16 @@
 		AFBE8A3D24366896005BFA96 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBE8A3C24366896005BFA96 /* ProfileViewController.swift */; };
 		AFBE8A3F243669D2005BFA96 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBE8A3E243669D2005BFA96 /* ProfileCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AF49F827243F262100880716 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF564F7224360875000612F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF564F7924360875000612F5;
+			remoteInfo = RecruitmentTask;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		09031B1A8038144B2CA9094C /* Pods-RecruitmentTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecruitmentTask.debug.xcconfig"; path = "Target Support Files/Pods-RecruitmentTask/Pods-RecruitmentTask.debug.xcconfig"; sourceTree = "<group>"; };
@@ -82,6 +93,9 @@
 		AF49F818243E0CA500880716 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		AF49F81A243E0CBF00880716 /* ProfileDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsViewModel.swift; sourceTree = "<group>"; };
 		AF49F81C243E0CD100880716 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		AF49F822243F262100880716 /* RecruitmentTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecruitmentTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF49F824243F262100880716 /* RecruitmentTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentTaskTests.swift; sourceTree = "<group>"; };
+		AF49F826243F262100880716 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF564F7A24360875000612F5 /* RecruitmentTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecruitmentTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF564F7D24360875000612F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF564F8124360875000612F5 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
@@ -96,6 +110,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AF49F81F243F262100880716 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AF564F7724360875000612F5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -260,10 +281,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		AF49F823243F262100880716 /* RecruitmentTaskTests */ = {
+			isa = PBXGroup;
+			children = (
+				AF49F824243F262100880716 /* RecruitmentTaskTests.swift */,
+				AF49F826243F262100880716 /* Info.plist */,
+			);
+			path = RecruitmentTaskTests;
+			sourceTree = "<group>";
+		};
 		AF564F7124360875000612F5 = {
 			isa = PBXGroup;
 			children = (
 				AF564F7C24360875000612F5 /* RecruitmentTask */,
+				AF49F823243F262100880716 /* RecruitmentTaskTests */,
 				AF564F7B24360875000612F5 /* Products */,
 				DA0D013D22FEF30BDACE59AA /* Pods */,
 				4BF7994C51EB44DBFB919392 /* Frameworks */,
@@ -274,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				AF564F7A24360875000612F5 /* RecruitmentTask.app */,
+				AF49F822243F262100880716 /* RecruitmentTaskTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -353,6 +385,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AF49F821243F262100880716 /* RecruitmentTaskTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF49F82C243F262100880716 /* Build configuration list for PBXNativeTarget "RecruitmentTaskTests" */;
+			buildPhases = (
+				AF49F81E243F262100880716 /* Sources */,
+				AF49F81F243F262100880716 /* Frameworks */,
+				AF49F820243F262100880716 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF49F828243F262100880716 /* PBXTargetDependency */,
+			);
+			name = RecruitmentTaskTests;
+			productName = RecruitmentTaskTests;
+			productReference = AF49F822243F262100880716 /* RecruitmentTaskTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		AF564F7924360875000612F5 /* RecruitmentTask */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF564F8E24360876000612F5 /* Build configuration list for PBXNativeTarget "RecruitmentTask" */;
@@ -382,6 +432,10 @@
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Yuliia Pavlenko";
 				TargetAttributes = {
+					AF49F821243F262100880716 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = AF564F7924360875000612F5;
+					};
 					AF564F7924360875000612F5 = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -401,11 +455,19 @@
 			projectRoot = "";
 			targets = (
 				AF564F7924360875000612F5 /* RecruitmentTask */,
+				AF49F821243F262100880716 /* RecruitmentTaskTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AF49F820243F262100880716 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AF564F7824360875000612F5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -461,6 +523,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AF49F81E243F262100880716 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF49F825243F262100880716 /* RecruitmentTaskTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AF564F7624360875000612F5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -504,6 +574,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AF49F828243F262100880716 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF564F7924360875000612F5 /* RecruitmentTask */;
+			targetProxy = AF49F827243F262100880716 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AF49F80B243A661B00880716 /* QA */ = {
@@ -583,6 +661,66 @@
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = QA;
+		};
+		AF49F829243F262100880716 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RecruitmentTaskTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = yuliiapavlenko.RecruitmentTaskTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RecruitmentTask.app/RecruitmentTask";
+			};
+			name = Debug;
+		};
+		AF49F82A243F262100880716 /* QA */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RecruitmentTaskTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = yuliiapavlenko.RecruitmentTaskTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RecruitmentTask.app/RecruitmentTask";
+			};
+			name = QA;
+		};
+		AF49F82B243F262100880716 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RecruitmentTaskTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = yuliiapavlenko.RecruitmentTaskTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RecruitmentTask.app/RecruitmentTask";
+			};
+			name = Release;
 		};
 		AF564F8C24360876000612F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -737,6 +875,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AF49F82C243F262100880716 /* Build configuration list for PBXNativeTarget "RecruitmentTaskTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF49F829243F262100880716 /* Debug */,
+				AF49F82A243F262100880716 /* QA */,
+				AF49F82B243F262100880716 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AF564F7524360875000612F5 /* Build configuration list for PBXProject "RecruitmentTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

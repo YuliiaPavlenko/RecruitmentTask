@@ -8,17 +8,22 @@
 
 import UIKit
 import PKHUD
+import RxSwift
+
 
 class ProfileViewController: UIViewController {
     let tableView = UITableView()
-    let cellId = "cellId"
+//    let cellId = "cellId"
     var profilePresenter = ProfilePresenter()
-    var profilesList = [ProfileModel]()
+    var profileViewModel = [ProfileModel]()
+    private let disposeBag = DisposeBag()
+//    var profileViewModel = [ProfileViewModel]()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         customizeNavigationBar(animated)
+//        setupUsersObserver()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -31,6 +36,8 @@ class ProfileViewController: UIViewController {
         profilePresenter.viewDelegate = self
         setupTableView()
         profilePresenter.viewIsPrepared()
+        setupUsersObserver()
+//        setupCellConfiguration()
     }
     
     func setupTableView() {
@@ -42,7 +49,7 @@ class ProfileViewController: UIViewController {
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.separatorColor = Colors.separatorColor
-        tableView.register(ProfileCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.Identifier)
     }
     
     fileprivate func configureConstraintsForTableView() {
@@ -69,16 +76,17 @@ class ProfileViewController: UIViewController {
 // MARK: - UITableView Delegate & DataSource
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profilesList.count
+        return profilePresenter.usersList.value.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProfileCell
-        let currentItem = profilesList[indexPath.row]
-        cell.userNameLabel.text = currentItem.name ?? "Empty name"
-        cell.userEmailLabel.text = currentItem.email ?? "Empty email"
-        cell.userPhoneLabel.text = currentItem.phone ?? "+00 000 000 000"
-        cell.profileImage.image = UIImage(named: currentItem.image!)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.Identifier, for: indexPath) as? ProfileCell else {
+          //Something went wrong with the identifier.
+          return UITableViewCell()
+        }
+        
+        let user = profilePresenter.usersList.value[indexPath.row]
+        cell.configureWithUser(user: user)
         return cell
     }
 
@@ -95,12 +103,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: ProfileViewDelegate
 extension ProfileViewController: ProfileViewDelegate {
-    func showUsersData(_ data: [ProfileModel]) {
-        profilesList = data
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
+//    func showUsersData(_ data: [ProfileModel]) {
+////        profileViewModel = data
+////        DispatchQueue.main.async {
+////            self.tableView.reloadData()
+////        }
+//    }
 
     func showProfileDetails() {
         let detailsVC = ProfileDetailsViewController()
@@ -121,5 +129,30 @@ extension ProfileViewController: ProfileViewDelegate {
             self.tableView.refreshControl?.endRefreshing()
             HUD.hide()
         }
+    }
+}
+
+//MARK: Rx Setup
+private extension ProfileViewController {
+    func setupUsersObserver() {
+        profilePresenter.usersList.asObservable().subscribe(onNext: {
+            [unowned self] _ in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            }).disposed(by: disposeBag)
+    }
+    
+    func setupCellConfiguration() {
+      //1
+      profilePresenter.usersList
+        .bind(to: tableView
+          .rx //2
+          .items(cellIdentifier: ProfileCell.Identifier,
+                 cellType: ProfileCell.self.self)) { //3
+                  row, user, cell in
+                  cell.configureWithUser(user: user) //4
+        }
+        .disposed(by: disposeBag) //5
     }
 }

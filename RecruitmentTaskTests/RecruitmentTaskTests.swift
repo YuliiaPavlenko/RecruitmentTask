@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import RecruitmentTask
 
 class RecruitmentTaskTests: XCTestCase {
 
@@ -28,6 +29,10 @@ class RecruitmentTaskTests: XCTestCase {
         measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testProfileModel() {
+        let profileModel = ProfileModel(name: <#String?#>)
     }
 
 }

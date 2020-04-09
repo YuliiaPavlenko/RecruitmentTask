@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol ProfileViewDelegate: class {
     func showProfileDetails()
-    func showUsersData(_ data: [ProfileModel])
+//    func showUsersData(_ data: [ProfileModel])
     func showDownloadUsersDataError(withMessage: DisplayErrorModel)
     func showProgress()
     func hideProgress()
 }
 
 class ProfilePresenter {
-    var usersList = [ProfileModel]()
+//    var usersList = [ProfileModel]()
+    var usersList: BehaviorRelay<[ProfileModel]> = BehaviorRelay(value: [])
 
     var originalUsers = [User]()
 
@@ -25,7 +28,7 @@ class ProfilePresenter {
 
     func profileClicked(_ atIndex: Int) {
         Cache.shared.setSelectedUser(originalUsers[atIndex])
-        Cache.shared.setUserImage(usersList[atIndex].image!)
+        Cache.shared.setUserImage(usersList.value[atIndex].image!)
         viewDelegate?.showProfileDetails()
     }
 
@@ -42,11 +45,12 @@ class ProfilePresenter {
 
                 for user in users {
                     let user = ProfileModel(name: user.name, email: user.email, phone: user.phone, image: self.getRandomImage())
-                    self.usersList.append(user)
+                    let newUser = self.usersList.value + [user]
+                    self.usersList.accept(newUser)
                     Cache.shared.setUserImage(self.getRandomImage())
                 }
                 
-                self.viewDelegate?.showUsersData(self.usersList)
+//                self.viewDelegate?.showUsersData(self.usersList.value)
             } else {
                 if let error = error {
                     self.viewDelegate?.showDownloadUsersDataError(withMessage: DisplayError.usersList.displayMessage(rtError: error))

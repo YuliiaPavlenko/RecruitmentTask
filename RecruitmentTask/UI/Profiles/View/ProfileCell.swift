@@ -9,6 +9,7 @@
 import UIKit
 
 class ProfileCell: UITableViewCell {
+    static let Identifier = "ProfileCell"
 
     let userNameLabel = ProfileViewElements.createUserNameLabel()
     let userEmailLabel = ProfileViewElements.createUserDetailsLabel()
@@ -34,6 +35,13 @@ class ProfileCell: UITableViewCell {
         addSubview(userEmailLabel)
         addSubview(userPhoneLabel)
         addSubview(profileImage)
+    }
+    
+    func configureWithUser(user: ProfileModel) {
+        userNameLabel.text = user.name ?? "Empty name"
+        userEmailLabel.text = user.email ?? "Empty email"
+        userPhoneLabel.text = user.phone ?? "+00 000 000 000"
+        profileImage.image = UIImage(named: user.image!)
     }
 
     required init?(coder aDecoder: NSCoder) {
