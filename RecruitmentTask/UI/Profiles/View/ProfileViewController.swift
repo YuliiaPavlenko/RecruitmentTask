@@ -14,15 +14,13 @@ import RxSwift
 class ProfileViewController: UIViewController {
     let tableView = UITableView()
     var profilePresenter = ProfilePresenter()
-    var profileViewModel = [ProfileModel]()
+    var profileModel = [ProfileModel]()
     private let disposeBag = DisposeBag()
-//    var profileViewModel = [ProfileViewModel]()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         customizeNavigationBar(animated)
-//        setupUsersObserver()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -73,12 +71,6 @@ class ProfileViewController: UIViewController {
 
 // MARK: ProfileViewDelegate
 extension ProfileViewController: ProfileViewDelegate {
-//    func showUsersData(_ data: [ProfileModel]) {
-////        profileViewModel = data
-////        DispatchQueue.main.async {
-////            self.tableView.reloadData()
-////        }
-//    }
 
     func showProfileDetails() {
         let detailsVC = ProfileDetailsViewController()
@@ -114,16 +106,15 @@ private extension ProfileViewController {
     }
     
     func setupCellConfiguration() {
-      //1
       profilePresenter.usersList
         .bind(to: tableView
-          .rx //2
+          .rx
           .items(cellIdentifier: ProfileCell.Identifier,
-                 cellType: ProfileCell.self)) { //3
+                 cellType: ProfileCell.self)) {
                   row, user, cell in
-                  cell.configureWithUser(user: user) //4
+                  cell.configureWithUser(user: user)
         }
-        .disposed(by: disposeBag) //5
+        .disposed(by: disposeBag)
     }
     
     func setupCellTapHandling() {

@@ -12,7 +12,6 @@ import RxCocoa
 
 protocol ProfileViewDelegate: class {
     func showProfileDetails()
-//    func showUsersData(_ data: [ProfileModel])
     func showDownloadUsersDataError(withMessage: DisplayErrorModel)
     func showProgress()
     func hideProgress()
