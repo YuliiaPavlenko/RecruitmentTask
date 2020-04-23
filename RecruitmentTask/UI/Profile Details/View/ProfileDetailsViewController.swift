@@ -81,14 +81,6 @@ class ProfileDetailsViewController: UIViewController {
 
     private func addSubviews() {
         view.addSubview(profileImage)
-        view.addSubview(profileName)
-        view.addSubview(profileEmail)
-        view.addSubview(profilePhone)
-        view.addSubview(addressLabel)
-        view.addSubview(companyTitleLabel)
-        view.addSubview(companyLabel)
-        view.addSubview(siteTitleLabel)
-        view.addSubview(siteLabel)
         view.addSubview(activityLabel)
         view.addSubview(editView)
         editView.addSubview(editImageView)

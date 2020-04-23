@@ -27,7 +27,7 @@ class ProfileDetailsPresenter {
         let userImage = Cache.shared.getUserImage()
 
         if let user = selectedUser {
-            let profileData = ProfileDetailsItemViewModel(name: user.name, email: user.email, phone: user.phone, image: userImage, address: prepareAdrressToDisplay(user.address), company: prepareCompanyAddressToDisplay(user.company), site: user.website)
+            let profileData = ProfileDetailsItemViewModel(name: user.name, email: user.email, phone: user.phone, image: userImage, address: prepareAdrressToDisplay(user.address), company: prepareCompanyAddressToDisplay(user.company), website: user.website)
             viewDelegate?.showProfileDetails(profileData)
 
             viewDelegate?.showProgress()

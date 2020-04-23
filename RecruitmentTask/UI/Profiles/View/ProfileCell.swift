@@ -31,8 +31,6 @@ class ProfileCell: UITableViewCell {
 
     private func addSubviews() {
         addSubview(userNameLabel)
-        addSubview(userEmailLabel)
-        addSubview(userPhoneLabel)
         addSubview(profileImage)
     }
 

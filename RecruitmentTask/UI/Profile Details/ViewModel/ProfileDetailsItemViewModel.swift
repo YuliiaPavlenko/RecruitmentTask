@@ -16,17 +16,4 @@ struct ProfileDetailsItemViewModel {
     var address: String?
     var company: String?
     var website: String?
-
-    init(name: String?, email: String?, phone: String?, image: String?,
-         address: String?, company: String?, site: String?) {
-        self.name = name
-        self.email = email
-        self.phone = phone
-        self.image = image
-        self.address = address
-        self.company = company
-        self.website = site
-    }
-
-    init() {}
 }
