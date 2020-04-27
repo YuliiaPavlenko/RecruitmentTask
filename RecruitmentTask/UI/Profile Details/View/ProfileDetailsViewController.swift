@@ -13,7 +13,7 @@ class ProfileDetailsViewController: UIViewController {
     let tableView = UITableView()
     let cellId = "cellId"
     var profileDetailsPresenter = ProfileDetailsPresenter()
-    var profileDetails = ProfileDetailsModel()
+    var profileDetails = ProfileDetailsItemViewModel()
     var postsList = [PostModel]()
 
     // MARK: - Create UI Elements
@@ -67,7 +67,7 @@ class ProfileDetailsViewController: UIViewController {
         setConstraints()
         setupTableView()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         profileDetailsPresenter.viewIsPrepared()
@@ -78,33 +78,25 @@ class ProfileDetailsViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
     }
-    
+
     private func addSubviews() {
         view.addSubview(profileImage)
-        view.addSubview(profileName)
-        view.addSubview(profileEmail)
-        view.addSubview(profilePhone)
-        view.addSubview(addressLabel)
-        view.addSubview(companyTitleLabel)
-        view.addSubview(companyLabel)
-        view.addSubview(siteTitleLabel)
-        view.addSubview(siteLabel)
         view.addSubview(activityLabel)
         view.addSubview(editView)
         editView.addSubview(editImageView)
     }
-    
+
     func setupTableView() {
         view.addSubview(tableView)
         configureConstraintsForTableView()
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ActivityCell.self, forCellReuseIdentifier: cellId)
-        
+
         tableView.separatorColor = .clear
     }
-    
+
     func configureConstraintsForTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: activityLabel.bottomAnchor).isActive = true
@@ -159,7 +151,7 @@ extension ProfileDetailsViewController: UITableViewDelegate, UITableViewDataSour
 
 // MARK: ProfileDetailsViewDelegate
 extension ProfileDetailsViewController: ProfileDetailsViewDelegate {
-    func showProfileDetails(_ data: ProfileDetailsModel) {
+    func showProfileDetails(_ data: ProfileDetailsItemViewModel) {
         profileDetails = data
         setProfileInformation()
     }

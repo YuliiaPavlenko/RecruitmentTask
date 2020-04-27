@@ -33,10 +33,10 @@ class ProfilePresenter {
 
     func viewIsPrepared() {
         viewDelegate?.showProgress()
-        
+
         NetworkManager.shared.getUsers { [weak self] (users, error) in
             guard let self = self else { return }
-            
+
             self.viewDelegate?.hideProgress()
 
             if let users = users {
@@ -48,7 +48,6 @@ class ProfilePresenter {
                     self.usersList.accept(newUser)
                     Cache.shared.setUserImage(self.getRandomImage())
                 }
-                
 //                self.viewDelegate?.showUsersData(self.usersList.value)
             } else {
                 if let error = error {

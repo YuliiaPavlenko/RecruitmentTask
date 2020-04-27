@@ -16,8 +16,6 @@ class ActivityCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubview(postTitle)
-        addSubview(postBody)
         addSubview(profileImage)
 
         let activityStackView = ProfileDetailsViewElements.createVerticalStackView(arrangedSubviews: [postTitle, postBody])

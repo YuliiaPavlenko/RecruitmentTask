@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileViewElements {
-    
+
     static func createUserNameLabel() -> UILabel {
         let nameLabel = UILabel()
         nameLabel.textColor = .black
@@ -33,7 +33,7 @@ class ProfileViewElements {
         imageView.clipsToBounds = true
         return imageView
     }
-    
+
     static func createHorizontalStackView(arrangedSubviews: [UILabel]) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
         stackView.distribution = .equalSpacing
@@ -42,6 +42,3 @@ class ProfileViewElements {
         return stackView
     }
 }
-
-
-

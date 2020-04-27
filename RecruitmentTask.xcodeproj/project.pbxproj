@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		807A3C7C52BC9FFAE392AE04 /* Pods_RecruitmentTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D92ED7CD3B9180DEC33E66 /* Pods_RecruitmentTask.framework */; };
+		AF4968842452008E00188743 /* ProfileViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4968832452008E00188743 /* ProfileViewModelProtocol.swift */; };
 		AF49F7C724379D9B00880716 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7C624379D9B00880716 /* UIView+Utils.swift */; };
 		AF49F7CA2437D89300880716 /* ProfileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7C92437D89300880716 /* ProfileDetailsViewController.swift */; };
 		AF49F7CC243890BC00880716 /* ProfileDetailsViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49F7CB243890BC00880716 /* ProfileDetailsViewElements.swift */; };
@@ -63,6 +64,7 @@
 		09031B1A8038144B2CA9094C /* Pods-RecruitmentTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecruitmentTask.debug.xcconfig"; path = "Target Support Files/Pods-RecruitmentTask/Pods-RecruitmentTask.debug.xcconfig"; sourceTree = "<group>"; };
 		28D92ED7CD3B9180DEC33E66 /* Pods_RecruitmentTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecruitmentTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4310965DB249D69257D23377 /* Pods-RecruitmentTask.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecruitmentTask.qa.xcconfig"; path = "Target Support Files/Pods-RecruitmentTask/Pods-RecruitmentTask.qa.xcconfig"; sourceTree = "<group>"; };
+		AF4968832452008E00188743 /* ProfileViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelProtocol.swift; sourceTree = "<group>"; };
 		AF49F7C624379D9B00880716 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		AF49F7C92437D89300880716 /* ProfileDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsViewController.swift; sourceTree = "<group>"; };
 		AF49F7CB243890BC00880716 /* ProfileDetailsViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsViewElements.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		AF49F804243A45EB00880716 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				AF4968832452008E00188743 /* ProfileViewModelProtocol.swift */,
 				AF49F818243E0CA500880716 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
@@ -563,6 +566,7 @@
 				AFBE8A3D24366896005BFA96 /* ProfileViewController.swift in Sources */,
 				AFBE8A3F243669D2005BFA96 /* ProfileCell.swift in Sources */,
 				AF564F96243616F5000612F5 /* Colors.swift in Sources */,
+				AF4968842452008E00188743 /* ProfileViewModelProtocol.swift in Sources */,
 				AF49F7F92439D24500880716 /* ProfileDetailsPresenter.swift in Sources */,
 				AF49F7FB2439D26900880716 /* ProfileDetailsIModel.swift in Sources */,
 				AF49F7C724379D9B00880716 /* UIView+Utils.swift in Sources */,

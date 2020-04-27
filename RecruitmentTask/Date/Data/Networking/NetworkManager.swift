@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NetworkManager {
+final class NetworkManager {
 
     static let shared = NetworkManager()
     let session: URLSession
@@ -16,9 +16,8 @@ class NetworkManager {
     private init() {
         session = URLSession(configuration: .default)
     }
-
-    func getUsers(completion: @escaping (([User]?, RTError?) -> Void)) {
-        let url = URL(string: Router.users)!
+    
+    private func getData<Data: Decodable>(url: URL, completion: @escaping ((Data?, RTError?) -> Void)) {
         let task = session.dataTask(with: url, completionHandler: { data, response, error in
 
             if let error = validateApiResponse(response: response, error: error) {
@@ -27,7 +26,7 @@ class NetworkManager {
             }
 
             do {
-                let json = try JSONDecoder().decode([User].self, from: data!)
+                let json = try JSONDecoder().decode(Data.self, from: data!)
 
                 completion(json, nil)
             } catch {
@@ -41,29 +40,13 @@ class NetworkManager {
         task.resume()
     }
 
+    func getUsers(completion: @escaping (([User]?, RTError?) -> Void)) {
+        let url = URL(string: Router.users)!
+        getData(url: url, completion: completion)
+    }
+
     func getPostsForUser(userId: Int, completion: @escaping (([Post]?, RTError?) -> Void)) {
         let url = URL(string: Router.postsForUser(userId))!
-        let task = session.dataTask(with: url, completionHandler: { data, response, error in
-
-            if let error = validateApiResponse(response: response, error: error) {
-                completion(nil, error)
-                return
-            }
-
-            do {
-                let json = try JSONDecoder().decode([Post].self, from: data! )
-
-                completion(json, nil)
-
-            } catch {
-                print("Error during JSON serialization: \(error.localizedDescription)")
-                var errorInfo = ErrorInfo()
-                errorInfo.message = "Error during JSON serialization: \(error.localizedDescription)"
-
-                completion(nil, RTError.parsingResponseError(errorInfo: errorInfo))
-            }
-
-        })
-        task.resume()
+        getData(url: url, completion: completion)
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ProfileDetailsViewDelegate: class {
-    func showProfileDetails(_ data: ProfileDetailsModel)
+    func showProfileDetails(_ data: ProfileDetailsItemViewModel)
     func showProfileDetailsError()
     func showPosts(_ data: [PostModel])
     func showDownloadPostsDataError(withMessage: DisplayErrorModel)
@@ -18,7 +18,7 @@ protocol ProfileDetailsViewDelegate: class {
 }
 
 class ProfileDetailsPresenter {
-    var profileDetails = [ProfileDetailsModel]()
+    var profileDetails = [ProfileDetailsItemViewModel]()
     var postsList = [PostModel]()
     weak var viewDelegate: ProfileDetailsViewDelegate?
 
@@ -27,9 +27,9 @@ class ProfileDetailsPresenter {
         let userImage = Cache.shared.getUserImage()
 
         if let user = selectedUser {
-            let profileData = ProfileDetailsModel(name: user.name, email: user.email, phone: user.phone, image: userImage, address: prepareAdrressToDisplay(user.address), company: prepareCompanyAddressToDisplay(user.company), site: user.website)
+            let profileData = ProfileDetailsItemViewModel(name: user.name, email: user.email, phone: user.phone, image: userImage, address: prepareAdrressToDisplay(user.address), company: prepareCompanyAddressToDisplay(user.company), website: user.website)
             viewDelegate?.showProfileDetails(profileData)
-            
+
             viewDelegate?.showProgress()
             NetworkManager.shared.getPostsForUser(userId: user.id) { [weak self] (posts, error) in
                 guard let self = self else { return }
@@ -61,7 +61,7 @@ class ProfileDetailsPresenter {
     private func prepareCompanyAddressToDisplay(_ company: Company) -> String {
         return "\(company.name), \(company.catchPhrase), \(company.bs)"
     }
-    
+
     private func getRandomImage() -> String {
         let hardcodedImages = ["postImage.png", "postImage-1.png", "postImage-2.png"]
         let imageIndex = Int(arc4random_uniform(UInt32(hardcodedImages.count)))

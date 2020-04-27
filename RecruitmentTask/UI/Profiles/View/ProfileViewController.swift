@@ -14,12 +14,11 @@ import RxSwift
 class ProfileViewController: UIViewController {
     let tableView = UITableView()
     var profilePresenter = ProfilePresenter()
-    var profileModel = [ProfileModel]()
     private let disposeBag = DisposeBag()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         customizeNavigationBar(animated)
     }
 
@@ -37,7 +36,7 @@ class ProfileViewController: UIViewController {
         setupCellConfiguration()
         setupCellTapHandling()
     }
-    
+
     func setupTableView() {
         view.addSubview(tableView)
         configureConstraintsForTableView()
@@ -47,7 +46,7 @@ class ProfileViewController: UIViewController {
         tableView.separatorColor = Colors.separatorColor
         tableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.Identifier)
     }
-    
+
     fileprivate func configureConstraintsForTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -69,7 +68,7 @@ class ProfileViewController: UIViewController {
     }
 }
 
-// MARK: ProfileViewDelegate
+// MARK:- ProfileViewDelegate
 extension ProfileViewController: ProfileViewDelegate {
 
     func showProfileDetails() {
@@ -94,7 +93,7 @@ extension ProfileViewController: ProfileViewDelegate {
     }
 }
 
-//MARK: Rx Setup
+// MARK:- Rx Setup
 private extension ProfileViewController {
     func setupUsersObserver() {
         profilePresenter.usersList.asObservable().subscribe(onNext: {

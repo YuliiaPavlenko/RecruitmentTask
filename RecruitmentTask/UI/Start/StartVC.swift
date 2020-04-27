@@ -27,21 +27,21 @@ class StartVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         startPresenter.viewDelegate = self
-        
+
         setupView()
         setupGestureRecognizer()
     }
-    
+
     fileprivate func setupGestureRecognizer() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         view.addGestureRecognizer(tapGesture)
     }
-    
+
     fileprivate func setupView() {
         view.backgroundColor = .white
         view.addSubview(logoImageView)
